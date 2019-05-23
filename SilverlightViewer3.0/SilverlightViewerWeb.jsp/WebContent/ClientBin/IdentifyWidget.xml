@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--To activate Identification mode, open this widget or select the Identify Tool Button in the  
+    Taskbar. Only the LivingMap layers configured in the AppConfig.xml file can be identified. 
+    To have a good performance, it is recommended to set only one LivingMap identifiable. -->
+<WidgetConfig>
+  <Tolerance>5</Tolerance> <!-- pixel number -->
+  <IdentifyOption>visible</IdentifyOption> <!--all, visible or top-->
+  
+  <IdentifyLayers>
+    <!--
+      title - must match the Title of the LivingMap layers configured in AppConfig.xml
+      layerIDs - a list of the feature layer IDs in a LivingMap separated with ',' 
+                 or input '*' to indicate all layers, for example, "0,1,2" or "*"
+                 used only when IdentifyOption is set to 'all'
+    -->
+    <Layer title="Louisville Safety" layerIDs="*"></Layer>
+    <Layer title="Louisville Land Records" layerIDs="*"></Layer>
+  </IdentifyLayers>
+</WidgetConfig>

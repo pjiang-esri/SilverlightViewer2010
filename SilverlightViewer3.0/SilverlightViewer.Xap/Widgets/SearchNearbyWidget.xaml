@@ -1,0 +1,44 @@
+﻿<base:WidgetBase x:Class="ESRI.SilverlightViewer.UIWidget.SearchNearbyWidget"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget"
+    VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled"
+    MinWidth="320" MaxWidth="600" AllowClickGraphics="True" ClearButtonImage="../Images/buttons/btn_clear.png">
+    <base:WidgetBase.TabButtons>
+        <base:WidgetTabButton ButtonImage="../Images/buttons/tab_searchnearby.png" Title="Search Nearby" ContentPanel="PanelSearchNearby"/>
+        <base:WidgetTabButton ButtonImage="../Images/buttons/tab_results.png" Title="Search Results"  ContentPanel="PanelSearchResult"/>
+    </base:WidgetBase.TabButtons>
+    <Grid Margin="0,0,0,0">
+        <StackPanel x:Name="PanelSearchNearby" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock Margin="2,8,4,2" Text="Select features from layer" TextAlignment="Left"></TextBlock>
+            <ComboBox Margin="2,4,2,4" x:Name="lstSearchLayer" Width="200" HorizontalAlignment="Right"></ComboBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="2,8,2,4">
+                <TextBlock Margin="0,0,4,0" Text="around the" HorizontalAlignment="Left"></TextBlock>
+                <RadioButton x:Name="RadioBufferCenter" Content="Extent Center" Margin="4,0,4,0" GroupName="RadioBufferMethod" IsChecked="true"></RadioButton>
+                <RadioButton x:Name="RadioBufferGeometry" Content="Geometry" Margin="4,0,0,0" GroupName="RadioBufferMethod"></RadioButton>
+            </StackPanel>
+            <TextBlock Margin="2,8,2,4" Text="of the selected graphic of widget" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+            <ComboBox x:Name="lstGraphicWidget" Margin="2,4,2,4" Width="200" HorizontalAlignment="Right"></ComboBox>
+
+            <StackPanel Orientation="Horizontal" Margin="2,8,2,4">
+                <TextBlock Text="Buffering Distance:" Margin="0,0,8,0" TextAlignment="Right" VerticalAlignment="Top"></TextBlock>
+                <TextBox x:Name="txtBufferDistance" Margin="0,0,8,0" Width="100" Text="100"></TextBox>
+                <ComboBox x:Name="lstBufferUnits">
+                    <ComboBoxItem Content="Feet" IsSelected="True" />
+                    <ComboBoxItem Content="Yards" />
+                    <ComboBoxItem Content="Meters" />
+                    <ComboBoxItem Content="Miles" />
+                </ComboBox>
+            </StackPanel>
+            <Button x:Name="btnSubmitSearch" Margin="2,12,2,8" Width="120" Height="24" Content="Start Search" FontWeight="Bold" Click="SubmitSearchButton_Click"/>
+        </StackPanel>
+        <Grid x:Name="PanelSearchResult" Margin="0,0,0,0" RenderTransformOrigin="0,500" MaxHeight="500" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="SearchResultMessage" Grid.Row="0" Margin="8,8,8,8" Text="" TextWrapping="Wrap" Foreground="Red" HorizontalAlignment="Center" Visibility="Collapsed"></TextBlock>
+            <base:FeaturesGrid x:Name="SearchResultGrid" Grid.Row="1" Margin="0,0,0,0" SelectedItemChange="SearchResultGrid_SelectedItemChange"></base:FeaturesGrid>
+        </Grid>
+    </Grid>
+</base:WidgetBase>

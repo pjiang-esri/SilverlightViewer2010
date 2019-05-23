@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WidgetConfig>
+   <!-- 
+      DisplayWindow: "Browser" or "Javascript"
+      Set to "Browser": Street View will display in new browser window
+      Set to "Javascript": Street View wil display in a floating Javascript window if the "Windowless" parameter
+                           for Silverlight Plugin is set to "true" in default.aspx or default.htm. *BUT please note:
+                           ONLY IE supports the Windowless = true mode 
+   -->
+   <DisplayWindow>Javascript</DisplayWindow> <!-- Browser OR Javascript -->
+   <WindowWidth>760</WindowWidth>
+   <WindowHeight>570</WindowHeight>
+   <GraphicIconSource>../Images/i_streetview.png</GraphicIconSource>
+</WidgetConfig>

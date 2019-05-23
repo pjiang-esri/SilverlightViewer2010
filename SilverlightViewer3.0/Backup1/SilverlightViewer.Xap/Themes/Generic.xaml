@@ -1,0 +1,8 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ESRI.SilverlightViewer;component/Generic/PrintMapPage.xaml" />
+        <ResourceDictionary Source="/ESRI.SilverlightViewer;component/Generic/MapNavigator.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

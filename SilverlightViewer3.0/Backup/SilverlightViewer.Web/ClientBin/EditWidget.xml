@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<WidgetConfig continuousAction="true" useFreehand="true" autoSelect="false" autoSave="true">
+   <!-- Select or Edit -->
+   <DefaultAction>Select</DefaultAction>
+   <EditableLayers>
+      <Layer title="Incident Points" serviceType="Feature" visibleInitial="true" restURL="http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/HomelandSecurity/operations/FeatureServer/0" outFields="lifecyclestatus,incident_number,ftype,fcode,collection_time,description" />
+      <Layer title="Incident Lines" serviceType="Feature" visibleInitial="true" restURL="http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/HomelandSecurity/operations/FeatureServer/1" outFields="lifecyclestatus,incident_number,ftype,fcode,collection_time,description" />
+      <Layer title="Incident Areas" serviceType="Feature" visibleInitial="true" restURL="http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/HomelandSecurity/operations/FeatureServer/2" outFields="lifecyclestatus,incident_number,ftype,fcode,collection_time,description" />
+   </EditableLayers>
+</WidgetConfig>

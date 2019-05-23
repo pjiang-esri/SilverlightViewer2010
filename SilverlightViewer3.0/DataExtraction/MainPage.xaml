@@ -1,0 +1,56 @@
+﻿<base:WidgetBase x:Class="DataExtraction.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget;assembly=ESRI.SilverlightViewer"
+    ClearButtonImage="../Images/btn_clear.png">
+   <base:WidgetBase.TabButtons>
+      <base:WidgetTabButton ButtonImage="../Images/tab_editExtract.png" Title="Submit Extraction Job" ContentPanel="PanelSubmitExtJob"/>
+      <base:WidgetTabButton ButtonImage="../Images/tab_download.png" Title="Download Extraction Result"  ContentPanel="PanelExtractResult"/>
+   </base:WidgetBase.TabButtons>
+   <Grid Background="White">
+      <StackPanel x:Name="PanelSubmitExtJob" Orientation="Vertical" HorizontalAlignment="Left" Width="320">
+         <TextBlock Text="1. Select Extration Service:" Margin="4,8,4,4" TextAlignment="Left"></TextBlock>
+         <ComboBox x:Name="lstExtractionService" Margin="0,0,0,8" Width="280" SelectionChanged="ExtrationService_SelectionChanged"></ComboBox>
+         <Path x:Name="SplitLine1" Margin="0,0,0,0" Stroke="Gray" StrokeThickness="2" HorizontalAlignment="Stretch" Stretch="UniformToFill" VerticalAlignment="Center" Height="2" Data="M 0.0,0.0 L 1.0,0.0"></Path>
+         <TextBlock Text="2. Select Extration Area:" Margin="4,4,4,4" TextAlignment="Left"></TextBlock>
+         <StackPanel x:Name="DrawModeButtonStack" Orientation="Horizontal" HorizontalAlignment="Center">
+            <HyperlinkButton x:Name="drawModePoly" Margin="2,2,2,2" Width="40" Height="40" Click="GeometryDrawMode_Click" Tag="Polygon">
+               <HyperlinkButton.Background>
+                  <ImageBrush ImageSource="../Images/i_draw_poly.png" Stretch="None" />
+               </HyperlinkButton.Background>
+            </HyperlinkButton>
+            <HyperlinkButton x:Name="drawModeRect" Margin="2,2,2,2" Width="40" Height="40" Click="GeometryDrawMode_Click" Tag="Rectangle">
+               <HyperlinkButton.Background>
+                  <ImageBrush ImageSource="../Images/i_draw_rect.png" Stretch="None" />
+               </HyperlinkButton.Background>
+               <HyperlinkButton.Effect>
+                  <DropShadowEffect Color="Cyan" BlurRadius="40" ShadowDepth="0" />
+               </HyperlinkButton.Effect>
+            </HyperlinkButton>
+            <HyperlinkButton x:Name="drawModeFreePoly" Margin="2,2,2,2" Width="40" Height="40" Click="GeometryDrawMode_Click" Tag="Freepoly">
+               <HyperlinkButton.Background>
+                  <ImageBrush ImageSource="../Images/i_draw_freepoly.png" Stretch="None" />
+               </HyperlinkButton.Background>
+            </HyperlinkButton>
+         </StackPanel>
+         <TextBlock x:Name="txtDrawModeStatus" Text="Draw a rectangle area of interest" Foreground="Brown" Margin="4,4,4,4" HorizontalAlignment="Center" />
+         <Path x:Name="SplitLine2" Margin="0,0,0,0" Stroke="Gray" StrokeThickness="2" HorizontalAlignment="Stretch" Stretch="UniformToFill" VerticalAlignment="Center" Height="2" Data="M 0.0,0.0 L 1.0,0.0"></Path>
+         <TextBlock Text="3. Select Layers to Extract:" Margin="4,4,4,4" TextAlignment="Left"></TextBlock>
+         <ListBox x:Name="lstLayersToClip" Margin="0,0,0,8" Width="280" Height="100"></ListBox>
+         <Path x:Name="SplitLine3" Margin="0,0,0,0" Stroke="Gray" StrokeThickness="2" HorizontalAlignment="Stretch" Stretch="UniformToFill" VerticalAlignment="Center" Height="2" Data="M 0.0,0.0 L 1.0,0.0"></Path>
+         <TextBlock Text="4. Select Feature Format:" Margin="4,8,4,4" TextAlignment="Left"></TextBlock>
+         <ComboBox x:Name="lstFeatureFormat" Margin="0,0,0,8" Width="280"></ComboBox>
+         <Path x:Name="SplitLine4" Margin="0,0,0,0" Stroke="Gray" StrokeThickness="2" HorizontalAlignment="Stretch" Stretch="UniformToFill" VerticalAlignment="Center" Height="2" Data="M 0.0,0.0 L 1.0,0.0"></Path>
+         <TextBlock Text="5. Select Raster Format:" Margin="4,8,4,4" TextAlignment="Left"></TextBlock>
+         <ComboBox x:Name="lstRasterformat" Margin="0,0,0,4" Width="280"></ComboBox>
+         <Grid Margin="0,8,0,4" Width="280">
+            <TextBlock x:Name="txtExtractionStatus" Text="Your job is being processed" Visibility="Collapsed" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Content="Extract"  HorizontalAlignment="Right" Click="ExtractButton_Click"/>
+         </Grid>
+      </StackPanel>
+      <StackPanel x:Name="PanelExtractResult" Margin="0,0,0,0" RenderTransformOrigin="0,300" MaxHeight="500" Visibility="Collapsed">
+         <HyperlinkButton x:Name="lnkExtractionOutput" Margin="8,8,8,8" Content="Click the link to download the extracted data set" ToolTipService.ToolTip="Download extracted data set" />
+         <TextBlock x:Name="txtJobErrorMessage" Margin="8,8,8,8" Text="" Visibility="Collapsed" Foreground="Red" TextWrapping="Wrap" />
+      </StackPanel>
+   </Grid>
+</base:WidgetBase>

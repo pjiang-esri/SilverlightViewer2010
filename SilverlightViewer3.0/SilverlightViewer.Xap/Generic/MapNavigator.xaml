@@ -1,0 +1,276 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:ESRI.SilverlightViewer.Controls;assembly=ESRI.SilverlightViewer.Controls"
+    xmlns:local="clr-namespace:ESRI.SilverlightViewer.Generic">
+
+    <Style TargetType="local:MapNavigator">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="#F0999988" />
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:MapNavigator">
+                    <Grid x:Name="NavigatorRootGrid" Background="Transparent" RenderTransformOrigin="0.5,0.5" Opacity="0.5">
+                        <Grid.Resources>
+                            <RadialGradientBrush x:Key="CircleButtonGradientBrush" GradientOrigin="0.25,0.25">
+                                <GradientStop Offset="0.25" Color="#99CCCCCC"></GradientStop>
+                                <GradientStop Offset="1.00" Color="#99000000"></GradientStop>
+                            </RadialGradientBrush>
+
+                            <SolidColorBrush x:Key="HoverShineBrush" Color="#3300FFFF" />
+                            <DropShadowEffect x:Key="HoverShineEffect" Color="#CC33CCCC" BlurRadius="20" ShadowDepth="0" />
+
+                            <LinearGradientBrush x:Key="ThumbGradientBrush" EndPoint="0.5,0.95" StartPoint="0.5,0.05">
+                                <GradientStop Color="#99FFFFFF" Offset="0" />
+                                <GradientStop Color="#99666666" Offset="1" />
+                            </LinearGradientBrush>
+
+                            <LinearGradientBrush x:Key="ThumbPressedBrush" EndPoint="0.5,0.95" StartPoint="0.5,0.05">
+                                <GradientStop Color="#99CCCCCC" Offset="0" />
+                                <GradientStop Color="#99333333" Offset="1" />
+                            </LinearGradientBrush>
+
+                            <!--Circle Button Style-->
+                            <Style TargetType="Button" x:Key="CircleButtonStyle" >
+                                <Setter Property="Background" Value="#F0CCCCCC" />
+                                <Setter Property="Foreground" Value="#FF000000" />
+                                <Setter Property="BorderBrush" Value="#F0333333" />
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button" xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+                                            <Grid x:Name="ButtonRootGrid" Background="Transparent">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates" >
+                                                        <VisualState x:Name="Normal" />
+                                                        <VisualState x:Name="MouseOver">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="HoverShineShape" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.1" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Pressed" />
+                                                        <VisualState x:Name="Disabled">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="DisabledMask" Storyboard.TargetProperty="Opacity" To="0.7" Duration="0:0:0.1" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Ellipse x:Name="BackgroundShape" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}"></Ellipse>
+                                                <Ellipse x:Name="HoverShineShape" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="{StaticResource HoverShineBrush}" Stroke="#00FFFFFF" StrokeThickness="0" Effect="{StaticResource HoverShineEffect}" Opacity="0.0" />
+                                                <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" />
+                                                <Ellipse x:Name="DisabledMask" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="#F0999999" Stroke="#00FFFFFF" StrokeThickness="0" Opacity="0.0" IsHitTestVisible="false"></Ellipse>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+
+                            <!-- Zoom Bar Thumb Style-->
+                            <Style TargetType="Thumb" x:Key="ZoomBarThumbStyle">
+                                <Setter Property="Background" Value="{StaticResource ThumbGradientBrush}" />
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="IsTabStop" Value="False" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Thumb">
+                                            <Grid x:Name="ThumbRootGrid" Background="Transparent">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualStateGroup.Transitions>
+                                                            <VisualTransition GeneratedDuration="00:00:00.1" To="MouseOver" />
+                                                            <VisualTransition GeneratedDuration="00:00:00.1" To="Pressed" />
+                                                            <VisualTransition From="Normal" GeneratedDuration="00:00:00.25" To="MouseOver" />
+                                                            <VisualTransition From="MouseOver" GeneratedDuration="00:00:00.25" To="Normal" />
+                                                            <VisualTransition From="MouseOver" GeneratedDuration="00:00:00.25" To="Pressed" />
+                                                            <VisualTransition From="Pressed" GeneratedDuration="00:00:00.25" To="MouseOver" />
+                                                        </VisualStateGroup.Transitions>
+                                                        <VisualState x:Name="Normal" />
+                                                        <VisualState x:Name="MouseOver">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="HoverShineBorder" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.1" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Pressed">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="PressedBorder" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.1" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Disabled">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="DisabledBorder" Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:0.1" />
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Border x:Name="BackgroundBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" />
+                                                <Border x:Name="HoverShineBorder" Background="{StaticResource HoverShineBrush}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" Opacity="0" />
+                                                <Border x:Name="PressedBorder" Background="{StaticResource ThumbPressedBrush}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" Opacity="0" />
+                                                <Border x:Name="DisabledBorder" Background="#F0999999" IsHitTestVisible="false" CornerRadius="2" Opacity="0" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+
+                            <!-- Zoom Slider Style-->
+                            <Style TargetType="Slider" x:Key="ZoomSliderStyle">
+                                <Setter Property="BorderThickness" Value="1" />
+                                <Setter Property="BorderBrush" Value="#99666666" />
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="Foreground" Value="#99666666" />
+                                <Setter Property="IsTabStop" Value="False" />
+                                <Setter Property="Maximum" Value="1" />
+                                <Setter Property="Minimum" Value="0" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Slider">
+                                            <Grid x:Name="LayoutRoot" Background="Transparent">
+                                                <Grid.Resources>
+                                                    <ControlTemplate x:Key="RepeatButtonTemplate1">
+                                                        <Grid x:Name="Root" Opacity="0" Background="Transparent" />
+                                                    </ControlTemplate>
+                                                    <ControlTemplate x:Key="RepeatButtonTemplate2">
+                                                        <Grid x:Name="Root" Opacity="1" Background="{StaticResource HoverShineBrush}"  />
+                                                    </ControlTemplate>
+                                                </Grid.Resources>
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualState x:Name="Normal" />
+                                                        <VisualState x:Name="MouseOver" />
+                                                        <VisualState x:Name="Disabled">
+                                                            <Storyboard>
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                                                    <SplineDoubleKeyFrame KeyTime="0" Value="0.5" />
+                                                                </DoubleAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Grid x:Name="HorizontalTemplate" Margin="0,0,0,0" Background="Transparent">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Rectangle Margin="0,4,0,4" Grid.Column="0" Grid.ColumnSpan="3" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Opacity="0.8" RadiusX="2" RadiusY="2" />
+                                                    <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" Margin="0,4,0,4" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate2}" Grid.Column="0" />
+                                                    <RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButton" Margin="0,4,0,4" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate1}" Grid.Column="2" />
+                                                    <Thumb x:Name="HorizontalThumb" Height="{TemplateBinding Height}" Width="8" Grid.Column="1" IsTabStop="True" Style="{StaticResource ZoomBarThumbStyle}" />
+                                                </Grid>
+                                                <Grid x:Name="VerticalTemplate" Margin="0,0,0,0" Visibility="Collapsed" Background="Transparent">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Rectangle Margin="4,0,4,0" Grid.Row="0" Grid.RowSpan="3" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Opacity="0.8" RadiusX="2" RadiusY="2" />
+                                                    <RepeatButton x:Name="VerticalTrackLargeChangeDecreaseRepeatButton" Margin="4,0,4,0" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate2}" Grid.Row="2" />
+                                                    <RepeatButton x:Name="VerticalTrackLargeChangeIncreaseRepeatButton" Margin="4,0,4,0" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate1}" Grid.Row="0" />
+                                                    <Grid Margin="4,2,4,2" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="*" />
+                                                        </Grid.RowDefinitions>
+                                                        <Rectangle Grid.Row="0" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                        <Rectangle Grid.Row="1" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                        <Rectangle Grid.Row="2" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                        <Rectangle Grid.Row="3" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                        <Rectangle Grid.Row="4" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                        <Rectangle Grid.Row="5" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                        <Rectangle Grid.Row="6" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                        <Rectangle Grid.Row="7" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                        <Rectangle Grid.Row="8" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                        <Rectangle Grid.Row="9" Fill="{TemplateBinding Foreground}" Stroke="#F0FFFFFF" StrokeThickness="0" Margin="2,2,2,2" RadiusX="0" RadiusY="0" />
+                                                    </Grid>
+                                                    <Thumb x:Name="VerticalThumb" Width="{TemplateBinding Width}" Grid.Row="1" Height="8" IsTabStop="True" Style="{StaticResource ZoomBarThumbStyle}" />
+                                                </Grid>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Grid.Resources>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="64" />
+                            <RowDefinition Height="40" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates" >
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="NavigatorRootGrid" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid x:Name="Navigator" Grid.Row="0" Width="60" Height="60" Background="Transparent" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid.RenderTransform>
+                                <RotateTransform x:Name="TransformRotate" Angle="0"/>
+                            </Grid.RenderTransform>
+                            <Ellipse x:Name="RotateRing" Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" Fill="{TemplateBinding Background}" ToolTipService.ToolTip="Drag to rotate" Cursor="Hand"/>
+                            <core:ButtonGrid x:Name="PanUp" Margin="0,2,0,0" BackgroundShape="M0.0,4.0 A10,3.0 0 0 1 20,4.0 L16,16 A8.0,4.0 0 0 0 4.0,16 L0.0,4.0 z" ForegroundShape="M0.0,1.0 L0.5,0.0 L1.0,1.0 z" Width="20" Height="16" BackShapeFill="{TemplateBinding Background}" ForeBorderBrush="Transparent" ForeBorderThick="0" ForeShapeFill="{TemplateBinding Foreground}" MouseOverBackFill="#F0999999" MouseOverForeFill="Cyan" VerticalAlignment="Top" HorizontalAlignment="Center" ToolTipService.ToolTip="Click to Move North" Cursor="Hand" />
+                            <core:ButtonGrid x:Name="PanDown" Margin="0,0,0,2" BackgroundShape="M20,12 A10,3.0 0 0 1 0.0,12 L4.0,0.0 A8.0,4.0 0 0 0 16,0.0 L20.0,12 z" ForegroundShape="M0.0,0.0 L0.5,1.0 L1.0,0.0" Width="20" Height="16" BackShapeFill="{TemplateBinding Background}" ForeBorderBrush="{TemplateBinding Foreground}" MouseOverBackFill="#F0999999" MouseOverForeBorderBrush="Cyan" VerticalAlignment="Bottom" HorizontalAlignment="Center" ToolTipService.ToolTip="Click to Move South" Cursor="Hand"/>
+                            <core:ButtonGrid x:Name="PanLeft" Margin="2,0,0,0" BackgroundShape="M4.0,0.0 L16,4.0 A4.0,8.0 0 0 0 16,16 L4.0,20 A3.0,10 0 0 1 4.0,0.0 z" ForegroundShape="M1.0,0.0 L0.0,0.5 L1.0,1.0" Width="16" Height="20" BackShapeFill="{TemplateBinding Background}" ForeBorderBrush="{TemplateBinding Foreground}" MouseOverBackFill="#F0999999" MouseOverForeBorderBrush="Cyan" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTipService.ToolTip="Click to Move East" Cursor="Hand"/>
+                            <core:ButtonGrid x:Name="PanRight" Margin="0,0,2,0" BackgroundShape="M12,0 A3.0,10 0 0 1 12,20 L0.0,16 A4.0,8.0 0 0 0 0.0,4.0 L12.0,0.0 z" ForegroundShape="M0.0,0.0 L1.0,0.5 L0.0,1.0" Width="16" Height="20" BackShapeFill="{TemplateBinding Background}" ForeBorderBrush="{TemplateBinding Foreground}" MouseOverBackFill="#F0999999" MouseOverForeBorderBrush="Cyan" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTipService.ToolTip="Click to Move East" Cursor="Hand"/>
+                            <Button x:Name="ResetRotation" Margin="0,0,0,0" Style="{StaticResource CircleButtonStyle}" Height="24" Width="24" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#F0FFFFFF" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Reset Map North" Cursor="Hand">
+                                <Button.Content>
+                                    <Image Source="../Images/icons/i_nav.png" Width="20" Height="20" Stretch="Uniform" />
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+
+                        <Grid x:Name="ZoomHistoryPanel" Grid.Row="1" Margin="0,8,0,8" Background="Transparent" HorizontalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16"></ColumnDefinition>
+                                <ColumnDefinition Width="24"></ColumnDefinition>
+                                <ColumnDefinition Width="16"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <core:ButtonGrid  x:Name="ZoomBackButton" Grid.Column="0" Margin="1,0,-1,0" BackgroundShape="M4.0,0.0 L16,4.0 A4.0,8.0 0 0 0 16,16 L4.0,20 A3.0,10 0 0 1 4.0,0.0 z" ForegroundShape="M1.0,0.0 L0.0,0.5 L1.0,1.0" Width="16" Height="20" BackShapeFill="{TemplateBinding Background}" ForeBorderBrush="{TemplateBinding Foreground}" MouseOverBackFill="#F0666666" MouseOverForeBorderBrush="Cyan" HorizontalAlignment="Left" VerticalAlignment="Center" ToolTipService.ToolTip="Zoom to Previous Extent" Cursor="Hand"/>
+                            <Button x:Name="ZoomFullButton" Grid.Column="1" Margin="0,0,0,0" Height="24" Width="24" Style="{StaticResource CircleButtonStyle}" Background="#F0FFFFFF" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTipService.ToolTip="Zoom to Full Extent" Cursor="Hand">
+                                <Button.Content>
+                                    <Image Source="../Images/icons/i_globe.png"  Width="20" Height="20" Stretch="Uniform" />
+                                </Button.Content>
+                            </Button>
+                            <core:ButtonGrid x:Name="ZoomNextButton" Grid.Column="2" Margin="-1,0,1,0" BackgroundShape="M12,0 A3.0,10 0 0 1 12,20 L0.0,16 A4.0,8.0 0 0 0 0.0,4.0 L12.0,0.0 z" ForegroundShape="M0.0,0.0 L1.0,0.5 L0.0,1.0" Width="16" Height="20" BackShapeFill="{TemplateBinding Background}" ForeBorderBrush="{TemplateBinding Foreground}" MouseOverBackFill="#F0666666" MouseOverForeBorderBrush="Cyan" HorizontalAlignment="Right" VerticalAlignment="Center" ToolTipService.ToolTip="Zoom to Next Extent" Cursor="Hand"/>
+                        </Grid>
+
+                        <Border x:Name="ZoomSliderBorder" Grid.Row="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10" HorizontalAlignment="Center">
+                            <StackPanel x:Name="ZoomStack" Orientation="Vertical">
+                                <Button x:Name="ZoomInButton" Height="20" Width="20" Margin="2,4,2,4" Background="{StaticResource CircleButtonGradientBrush}" Style="{StaticResource CircleButtonStyle}" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Zoom In" Cursor="Hand" >
+                                    <Button.Content>
+                                        <Path Stroke="{TemplateBinding Foreground}" StrokeThickness="2" Width="10" Height="10" Stretch="Fill" Data="M0.0,0.5 L1.0,0.5 M0.5,0.0 L0.5,1.0"></Path>
+                                    </Button.Content>
+                                </Button>
+                                <Grid x:Name="ZoomLevelGrid">
+                                    <Slider x:Name="ZoomSlider" Orientation="Vertical" Height="96" Width="20" Background="{TemplateBinding Foreground}" Foreground="{TemplateBinding Background}" Minimum="0" Maximum="1" SmallChange="1" LargeChange="2" ToolTipService.ToolTip="Move Thumb up to Zoom in, Down to Zoom out" Style="{StaticResource ZoomSliderStyle}" />
+                                </Grid>
+                                <Button x:Name="ZoomOutButton" Height="20" Width="20" Margin="2,4,2,4" Background="{StaticResource CircleButtonGradientBrush}" Style="{StaticResource CircleButtonStyle}" BorderBrush="Transparent" BorderThickness="0" ToolTipService.ToolTip="Zoom Out" Cursor="Hand">
+                                    <Button.Content>
+                                        <Path Stroke="{TemplateBinding Foreground}" StrokeThickness="2" Width="10" Height="10" Stretch="Fill" Data="M0.0,0.5 L1.0,0.5"></Path>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

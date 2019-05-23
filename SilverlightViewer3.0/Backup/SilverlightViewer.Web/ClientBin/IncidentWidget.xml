@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<WidgetConfig >
+   <LayerUrl>http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Earthquakes/Since_1970/MapServer/0</LayerUrl>
+   <FilterFields>Magnitude,Num_Deaths</FilterFields> <!-- Fields of String and Number types only -->
+   <OutputFields>Magnitude,Name,Tsu,Num_Deaths,Num_Injured,Mill_Damages,Num_Houses_Dest,Num_Houses_Dam</OutputFields>
+   <UseTimeInfo>true</UseTimeInfo> <!-- true - the TimeExtent value of a time slider will be used as a filter -->
+   <TimeInterval>12</TimeInterval> <!-- Months - used to create notches for the time slider -->
+   <InitInterval>Last</InitInterval> <!-- First or Last - used to limit the number of features under 1000 -->
+   <Opacity>1.0</Opacity>
+   <ProxyUrl></ProxyUrl>
+   <Token></Token>
+</WidgetConfig>

@@ -1,0 +1,94 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget"
+    xmlns:view="clr-namespace:ESRI.SilverlightViewer.Generic"
+    xmlns:core="clr-namespace:ESRI.SilverlightViewer.Controls;assembly=ESRI.SilverlightViewer.Controls">
+
+    <Style x:Key="TaskbarStyle" TargetType="base:TaskbarBase">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <GradientStop Color="PowderBlue" Offset="0.0"/>
+                    <GradientStop Color="LightBlue" Offset="0.5"/>
+                    <GradientStop Color="SeaShell" Offset="0.9"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="#F0336699"></Setter>
+        <Setter Property="DockPosition" Value="TOP"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid x:Name="TemplateGrid">
+                        <Path x:Name="DOCK_STATION" Height="65" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="{Binding Background}" Opacity="{Binding BackOpacity}" Stroke="{Binding BorderBrush}" StrokeThickness="{Binding BorderThickness}" Data="M0,0 L0,42 C1.5023474,85.296806 12.185706,88.443001 34.887844,75.860352 C55.908905,64.209442 171.62526,45.60294 233.19769,61.71278 C299.30099,79.00808 398.27368,74.76548 469.56702,45.987587 C516.3067,27.120884 586.41626,77.432091 640,45 L640,0 L0,0 z">
+                            <Path.Effect>
+                                <DropShadowEffect Color="#FF333333" ShadowDepth="0" BlurRadius="5" />
+                            </Path.Effect>
+                        </Path>
+                        <ContentPresenter x:Name="ContentPanel" Margin="0,0,0,0" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AppToolbarStyle" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="Canvas.Top" Value="20" />
+    </Style>
+
+    <Style x:Key="SwitchMenuButtonStyle" TargetType="core:SwitchMenuButton">
+        <Setter Property="ContentPosition" Value="DOWN" />
+        <Setter Property="Margin" Value="25,0,25,0" />
+        <Setter Property="Canvas.ZIndex" Value="999" />
+        <Setter Property="DefaultEffect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="50" ShadowDepth="0" Color="#FF000000" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MouseOverEffect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="50" ShadowDepth="0" Color="#FF00FFFF" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DropMenuButtonStyle" TargetType="core:DropMenuButton">
+        <Setter Property="ContentPosition" Value="DOWN" />
+        <Setter Property="Margin" Value="25,0,25,0" />
+        <Setter Property="Canvas.ZIndex" Value="1000" />
+        <Setter Property="DefaultEffect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="50" ShadowDepth="0" Color="#FF000000" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MouseOverEffect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="50" ShadowDepth="0" Color="#FF00FFFF" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NavigatorStyle" TargetType="view:MapNavigator">
+        <Setter Property="Margin" Value="20,80,0,0"/>
+        <Setter Property="Background" Value="#F04996A9"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+    
+    <Style x:Key="WidgetStyle" TargetType="base:WidgetBase">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <GradientStop Color="PowderBlue" Offset="0.0"/>
+                    <GradientStop Color="LightBlue" Offset="0.5"/>
+                    <GradientStop Color="SeaShell" Offset="0.9"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TitleForeground" Value="#FFFFFFFF"></Setter>
+        <Setter Property="BorderBrush" Value="#F0336699"></Setter>
+    </Style>
+
+</ResourceDictionary>

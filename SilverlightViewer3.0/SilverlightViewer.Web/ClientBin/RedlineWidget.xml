@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+
+<!-- Thanks a lot to Jim Westman at ESRI for providing this widget -->
+
+<WidgetConfig>
+   <Units abbreviation="m" conversion="1">Meters</Units>
+   <Units abbreviation="km" conversion="0.001">Kilometers</Units>
+   <Units abbreviation="ft" conversion="3.28083">Feet</Units>
+   <Units abbreviation="yd" conversion="1.09361">Yards</Units>
+   <Units abbreviation="mi" conversion="0.00062137">Miles</Units>
+</WidgetConfig>

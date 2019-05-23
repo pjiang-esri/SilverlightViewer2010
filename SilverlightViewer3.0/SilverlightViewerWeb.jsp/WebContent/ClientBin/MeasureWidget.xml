@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<WidgetConfig>
+   <!-- 
+  If the units of the base map projection is decimal degrees, call the Project method in 
+  GeometryService to convert a geometry to a projection that uses a measured units (e.g. meters). 
+  If the base map units are in measured units, the call to Project is unnecessary. But it 
+  is recommended to use an appropriate projection (ProjectToWKID) for your area.
+  -->
+   <!-- true: Geometry Service is always used to project -->
+   <AlwaysProject>true</AlwaysProject>
+   <!-- A local Projection WKID -->
+   <ProjectToWKID>102003</ProjectToWKID>
+   <LengthUnits>
+      <Units abbreviation="m" conversion="1">Meters</Units>
+      <Units abbreviation="km" conversion=".001">Kilometers</Units>
+      <Units abbreviation="ft" conversion="3.28083">Feet</Units>
+      <Units abbreviation="yd" conversion="1.09361">Yards</Units>
+      <Units abbreviation="mi" conversion="0.00062137">Miles</Units>
+   </LengthUnits>
+   <AreaUnits>
+      <Units abbreviation="sq m" conversion="1">Square Meters</Units>
+      <Units abbreviation="sq km" conversion="0.000001">Square Kilometers</Units>
+      <Units abbreviation="sq ft" conversion="10.7638454889">Square Feet</Units>
+      <Units abbreviation="sq mi" conversion="0.00000038610">Square Miles</Units>
+      <Units abbreviation="ac" conversion="0.00024710538147">Acres</Units>
+      <Units abbreviation="ha" conversion="0.0001">Hectares</Units>
+   </AreaUnits>
+</WidgetConfig>

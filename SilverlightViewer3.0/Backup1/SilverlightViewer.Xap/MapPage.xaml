@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="ESRI.SilverlightViewer.MapPage" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget"
+    xmlns:view="clr-namespace:ESRI.SilverlightViewer.Generic"
+ 	xmlns:esri="clr-namespace:ESRI.ArcGIS.Client;assembly=ESRI.ArcGIS.Client"
+    xmlns:esrik="clr-namespace:ESRI.ArcGIS.Client.Toolkit;assembly=ESRI.ArcGIS.Client.Toolkit"
+    xmlns:widget="clr-namespace:ESRI.SilverlightViewer.UIWidget"
+	Width="Auto" Height="Auto" Loaded="Page_Loaded">
+
+    <Grid x:Name="LayoutRoot" Margin="0" Background="White">
+        <Grid.Resources>
+            <Style x:Key="defaultNavigatorStyle" TargetType="view:MapNavigator">
+                <Setter Property="Margin" Value="20,80,0,0"/>
+                <Setter Property="Background" Value="#F0999680"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+            
+            <Style x:Key="defaultScaleBarStyle" TargetType="esrik:ScaleLine">
+                <Setter Property="Margin" Value="20,0,0,80"/>
+                <Setter Property="VerticalAlignment" Value="Bottom"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+        </Grid.Resources>
+        
+        <esri:Map x:Name="myMap" Width="Auto" Height="Auto" Progress="MyMap_Progress" ExtentChanged="MyMap_ExtentChanged" IsLogoVisible="False"></esri:Map>
+        <view:MapNavigator x:Name="myNavigator" Map="{Binding ElementName=myMap}" Style="{StaticResource defaultNavigatorStyle}">
+            <view:MapNavigator.Effect>
+                <DropShadowEffect Color="White" BlurRadius="25" ShadowDepth="0" Opacity="1.0" />
+            </view:MapNavigator.Effect>
+        </view:MapNavigator>
+        <esrik:ScaleLine x:Name="myScaleBar" Map="{Binding ElementName=myMap}" FontWeight="Bold" Style="{StaticResource defaultScaleBarStyle}">
+            <esrik:ScaleLine.Effect>
+                <DropShadowEffect Color="White" BlurRadius="10" ShadowDepth="0" Opacity="1.0" />
+            </esrik:ScaleLine.Effect>
+        </esrik:ScaleLine>
+        <Grid x:Name="progressGrid" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="200" Height="20" Margin="5,5,5,5" >
+            <ProgressBar x:Name="myProgressBar" Minimum="0" Maximum="100" />
+            <TextBlock x:Name="ProgressValueTextBlock" Text="100%" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+        <Canvas x:Name="WidgetsCanvas" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <widget:TaskbarWidget x:Name="myTaskbarWidget" InitialTop="10" InitialLeft="100" BarWidth="480" BarHeight="70" DockHeight="55">
+                <base:MapBinder.Binding>
+                    <base:MapBindingProperties SourceElement="myMap" TargetProperty="MapControl" />
+                </base:MapBinder.Binding>
+            </widget:TaskbarWidget>
+        </Canvas>
+    </Grid>
+</UserControl>

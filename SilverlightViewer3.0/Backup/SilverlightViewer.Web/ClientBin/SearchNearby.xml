@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WidgetConfig>
+   <!-- 
+    If the units of the base map projection is decimal degrees, call the Project method in 
+    GeometryService to convert a geometry to a projection that uses a measured units (e.g. meters). 
+    it is recommended to use an appropriate projection (ProjectToWKID) for your area.
+    -->
+   <!-- A local Projection WKID -->
+   <ProjectToWKID>102003</ProjectToWKID>
+   <SearchLayers>
+      <Layer title="Parcels" restURL="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/0">
+         <OutputFields>PARCELID</OutputFields>
+         <OutputLabels>PARCEL ID</OutputLabels>
+         <MapTipTemplate>Title=Parcel;Content=PIN: {#PARCELID}</MapTipTemplate>
+         <ProxyUrl></ProxyUrl>
+         <Token></Token>
+      </Layer>
+      <Layer title="Landuse" restURL="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/1">
+         <OutputFields>LANDUSE_CODE,LANDUSE_NAME</OutputFields>
+         <OutputLabels>CODE,NAME</OutputLabels>
+         <MapTipTemplate>Title=Landuse;Content=Code: {#LANDUSE_CODE}\nName: {#LANDUSE_NAME}</MapTipTemplate>
+         <ProxyUrl></ProxyUrl>
+         <Token></Token>
+      </Layer>
+      <Layer title="Zoning" restURL="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/2">
+         <OutputFields>ZONING_CODE,ZONING_NAME,ZONING_TYPE</OutputFields>
+         <OutputLabels>CODE,NAME,TYPE</OutputLabels>
+         <MapTipTemplate>Title=Zoning;Content=Code: {#ZONING_CODE}\nName: {#ZONING_NAME}\nType: {#ZONING_TYPE}</MapTipTemplate>
+         <ProxyUrl></ProxyUrl>
+         <Token></Token>
+      </Layer>
+   </SearchLayers>
+</WidgetConfig>

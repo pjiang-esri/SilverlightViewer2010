@@ -1,0 +1,257 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:esrisb="clr-namespace:ESRI.ArcGIS.Client.Symbols;assembly=ESRI.ArcGIS.Client">
+
+    <!--Zoom-box Symbol-->
+    <esrisb:SimpleFillSymbol x:Key="ZoomBoxFillSymbol" Fill="#33333333" BorderThickness="2">
+        <esrisb:FillSymbol.BorderBrush>
+            <SolidColorBrush Color="Black" />
+        </esrisb:FillSymbol.BorderBrush>
+    </esrisb:SimpleFillSymbol>
+    
+    <!--Highlight Symbols-->
+    <esrisb:MarkerSymbol x:Key="HighlightPointSymbol" OffsetX="12" OffsetY="12">
+        <esrisb:MarkerSymbol.ControlTemplate>
+            <ControlTemplate xmlns="http://schemas.microsoft.com/client/2007" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                <Grid x:Name="RootElement" RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Grid.RenderTransform>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"></VisualState>
+                            <VisualState x:Name="MouseOver">
+                                <!--<Storyboard RepeatBehavior="Forever">
+                                    <ColorAnimation BeginTime="0:0:0" Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(RadialGradientBrush.GradientStops)[0].(GradientStop.Color)" From="#EEFF0000" To="#EEFFFF00" Duration="0:0:1"/>
+                                    <ColorAnimation BeginTime="0:0:0" Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(RadialGradientBrush.GradientStops)[1].(GradientStop.Color)" From="#EEFFFF00" To="#EEFF0000" Duration="0:0:1"/>
+                                    <ColorAnimation BeginTime="0:0:0" Storyboard.TargetName="Ellipse" Storyboard.TargetProperty="(Shape.Fill).(RadialGradientBrush.GradientStops)[2].(GradientStop.Color)" From="#EEFF0000" To="#EEFFFF00" Duration="0:0:1"/>
+                                </Storyboard>-->
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" To="1.5" Duration="0:0:1" />
+                                    <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" To="1.5" Duration="0:0:1" />
+                                    <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="(UIElement.Opacity)" From="1" To="0.5" Duration="00:00:01" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="SelectionStates">
+                            <VisualState x:Name="Unselected"></VisualState>
+                            <VisualState x:Name="Selected">
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" To="1.5" Duration="0:0:1" />
+                                    <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" To="1.5" Duration="0:0:1" />
+                                    <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="(UIElement.Opacity)" From="1" To="0.5" Duration="00:00:01" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Ellipse x:Name="Ellipse" Width="24" Height="24">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                <GradientStop Color="#EEFF0000" Offset="0.0" />
+                                <GradientStop Color="#EEFFFF00" Offset="0.5" />
+                                <GradientStop Color="#EEFF0000" Offset="1.0" />
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+            </ControlTemplate>
+        </esrisb:MarkerSymbol.ControlTemplate>
+    </esrisb:MarkerSymbol>
+    <esrisb:LineSymbol x:Key="HighlightLineSymbol">
+        <esrisb:LineSymbol.ControlTemplate>
+            <ControlTemplate xmlns="http://schemas.microsoft.com/client/2007" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                <Grid x:Name="RootElement">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"></VisualState>
+                            <VisualState x:Name="MouseOver">
+                                <Storyboard RepeatBehavior="Forever">
+                                    <ColorAnimation BeginTime="0:0:0" Storyboard.TargetName="Element" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" From="#EEFF0000" To="#EEFFFF00" Duration="0:0:1" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="SelectionStates">
+                            <VisualState x:Name="Unselected"></VisualState>
+                            <VisualState x:Name="Selected">
+                                <Storyboard RepeatBehavior="Forever">
+                                    <ColorAnimation BeginTime="0:0:0" Storyboard.TargetName="Element" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" From="#EEFF0000" To="#EEFFFF00" Duration="0:0:1" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Path x:Name="Element" StrokeDashArray="2,1" StrokeDashOffset="0" Stroke="#EEFF0000" StrokeThickness="3" />
+                </Grid>
+            </ControlTemplate>
+        </esrisb:LineSymbol.ControlTemplate>
+    </esrisb:LineSymbol>
+    <esrisb:FillSymbol x:Key="HighlightFillSymbol">
+        <esrisb:FillSymbol.ControlTemplate>
+            <ControlTemplate xmlns="http://schemas.microsoft.com/client/2007" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                <Grid>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"></VisualState>
+                            <VisualState x:Name="MouseOver">
+                                <Storyboard RepeatBehavior="Forever">
+                                    <ColorAnimation BeginTime="0:0:0" Storyboard.TargetName="Element" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" From="#66FFFF00" To="#66FF0000" Duration="0:0:1"/>
+                                    <ColorAnimation BeginTime="0:0:0" Storyboard.TargetName="Element" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" From="#EEFF0000" To="#EEFFFF00" Duration="0:0:1" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                        <VisualStateGroup x:Name="SelectionStates">
+                            <VisualState x:Name="Unselected"></VisualState>
+                            <VisualState x:Name="Selected">
+                                <Storyboard RepeatBehavior="Forever">
+                                    <ColorAnimation BeginTime="0:0:0" Storyboard.TargetName="Element" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" From="#66FFFF00" To="#66FF0000" Duration="0:0:1"/>
+                                    <ColorAnimation BeginTime="0:0:0" Storyboard.TargetName="Element" Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" From="#EEFF0000" To="#EEFFFF00" Duration="0:0:1" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Path x:Name="Element" Fill="#66FFFF00" Stroke="#EEFF0000" StrokeDashArray="2,1" StrokeDashOffset="0" StrokeThickness="3"></Path>
+                </Grid>
+            </ControlTemplate>
+        </esrisb:FillSymbol.ControlTemplate>
+    </esrisb:FillSymbol>
+
+    <!-- Selected Symbols -->
+    <esrisb:MarkerSymbol x:Key="SelectedPointSymbol" OffsetX="12" OffsetY="12">
+        <esrisb:MarkerSymbol.ControlTemplate>
+            <ControlTemplate xmlns="http://schemas.microsoft.com/client/2007" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                <Grid x:Name="RootElement" RenderTransformOrigin="0.5,0.5">
+                    <Grid.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Grid.RenderTransform>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="SelectionStates">
+                            <VisualState x:Name="Unselected"></VisualState>
+                            <VisualState x:Name="Selected">
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" To="2.5" Duration="0:0:1" />
+                                    <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" To="2.5" Duration="0:0:1" />
+                                    <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetName="RootElement" Storyboard.TargetProperty="(UIElement.Opacity)" From="1" To="0.5" Duration="0:0:1" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Ellipse x:Name="Ellipse" Width="24" Height="24">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                <GradientStop Color="#EE0000FF" Offset="0.0" />
+                                <GradientStop Color="#EE00FFFF" Offset="0.5" />
+                                <GradientStop Color="#EE0000FF" Offset="1.0" />
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+            </ControlTemplate>
+        </esrisb:MarkerSymbol.ControlTemplate>
+    </esrisb:MarkerSymbol>
+    <esrisb:LineSymbol x:Key="SelectedLineSymbol">
+        <esrisb:LineSymbol.ControlTemplate>
+            <ControlTemplate xmlns="http://schemas.microsoft.com/client/2007" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                <Grid x:Name="RootElement">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="SelectionStates">
+                            <VisualState x:Name="Unselected"></VisualState>
+                            <VisualState x:Name="Selected">
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation BeginTime="00:00:00" Storyboard.TargetName="Element" Storyboard.TargetProperty="StrokeDashOffset" To="1000" Duration="0:3:0" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Path x:Name="Element" StrokeDashArray="2,1" StrokeDashOffset="0" Stroke="#EE00FFFF" StrokeThickness="3" />
+                </Grid>
+            </ControlTemplate>
+        </esrisb:LineSymbol.ControlTemplate>
+    </esrisb:LineSymbol>
+    <esrisb:FillSymbol x:Key="SelectedFillSymbol">
+        <esrisb:FillSymbol.ControlTemplate>
+            <ControlTemplate xmlns="http://schemas.microsoft.com/client/2007" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                <Grid>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="SelectionStates">
+                            <VisualState x:Name="Unselected"></VisualState>
+                            <VisualState x:Name="Selected">
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation BeginTime="00:00:00" Storyboard.TargetName="Element" Storyboard.TargetProperty="StrokeDashOffset" To="1000" Duration="0:3:0" />
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Path x:Name="Element" Fill="#330000FF" Stroke="#EE00FFFF" StrokeDashArray="2,1" StrokeDashOffset="0" StrokeThickness="3"></Path>
+                </Grid>
+            </ControlTemplate>
+        </esrisb:FillSymbol.ControlTemplate>
+    </esrisb:FillSymbol>
+
+    <!--Draw Symbols-->
+    <esrisb:MarkerSymbol x:Key="DrawObjectPointSymbol" OffsetX="8" OffsetY="8">
+        <esrisb:MarkerSymbol.ControlTemplate>
+            <ControlTemplate>
+                <Grid Width="16" Height="16">
+                    <Rectangle Width="20" Height="5" Fill="#FFFFFF00" Stroke="#FFFF0000" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Rectangle Width="5" Height="20" Fill="#FFFFFF00" Stroke="#FFFF0000" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Ellipse Width="12" Height="12" Fill="#FFFFFF00" Stroke="#FFFF0000" StrokeThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Ellipse Width="6" Height="6" Fill="#FFFFFF00" Stroke="#FFFF0000" StrokeThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
+            </ControlTemplate>
+        </esrisb:MarkerSymbol.ControlTemplate>
+    </esrisb:MarkerSymbol>
+    <esrisb:LineSymbol x:Key="DrawObjectLineSymbol" Width="3">
+        <esrisb:LineSymbol.Color>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="4,4" MappingMode="Absolute" SpreadMethod="Repeat">
+                <GradientStop Color="Red" Offset="0.5" />
+                <GradientStop Color="Yellow" Offset="0.5" />
+            </LinearGradientBrush>
+        </esrisb:LineSymbol.Color>
+    </esrisb:LineSymbol>
+    <esrisb:FillSymbol x:Key="DrawObjectFillSymbol" Fill="#66FFFF00" BorderThickness="2">
+        <esrisb:FillSymbol.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="4,4" MappingMode="Absolute" SpreadMethod="Repeat">
+                <GradientStop Color="Red" Offset="0.5" />
+                <GradientStop Color="Yellow" Offset="0.5" />
+            </LinearGradientBrush>
+        </esrisb:FillSymbol.BorderBrush>
+    </esrisb:FillSymbol>
+
+    <!--Default Symbols-->
+    <esrisb:PictureMarkerSymbol x:Key="FlagPictureSymbol" OffsetX="0" OffsetY="20" Source="../images/symbols/flag_red.png"></esrisb:PictureMarkerSymbol>
+    <esrisb:SimpleMarkerSymbol x:Key="SimplePointSymbol" Size="15" Style="Circle" >
+        <esrisb:SimpleMarkerSymbol.Color>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="4,4" MappingMode="Absolute" SpreadMethod="Repeat">
+                <GradientStop Color="Blue" Offset="0.5" />
+                <GradientStop Color="Cyan" Offset="0.5" />
+            </LinearGradientBrush>
+        </esrisb:SimpleMarkerSymbol.Color>
+    </esrisb:SimpleMarkerSymbol>
+    <esrisb:SimpleLineSymbol x:Key="SimpleLineSymbol" Width="3">
+        <esrisb:LineSymbol.Color>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="4,4" MappingMode="Absolute" SpreadMethod="Repeat">
+                <GradientStop Color="Blue" Offset="0.5" />
+                <GradientStop Color="Cyan" Offset="0.5" />
+            </LinearGradientBrush>
+        </esrisb:LineSymbol.Color>
+    </esrisb:SimpleLineSymbol>
+    <esrisb:SimpleFillSymbol x:Key="SimpleFillSymbol" Fill="#5500FFFF" BorderThickness="2">
+        <esrisb:FillSymbol.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="4,4" MappingMode="Absolute" SpreadMethod="Repeat">
+                <GradientStop Color="Blue" Offset="0.5" />
+                <GradientStop Color="Cyan" Offset="0.5" />
+            </LinearGradientBrush>
+        </esrisb:FillSymbol.BorderBrush>
+    </esrisb:SimpleFillSymbol>
+
+    <!-- Cluster Symbols -->
+    <SolidColorBrush x:Key="FlareBackground" Color="#99FFFF00"></SolidColorBrush>
+    <SolidColorBrush x:Key="FlareForeground" Color="#99000000"></SolidColorBrush>
+    <LinearGradientBrush x:Key="ClusterGradient" MappingMode="RelativeToBoundingBox" >
+        <GradientStop Color="#990011FF" Offset="0"/>
+        <GradientStop Color="#990055FF" Offset="0.25"/>
+        <GradientStop Color="#990099FF" Offset="0.5"/>
+        <GradientStop Color="#9900CCFF" Offset="0.75"/>
+        <GradientStop Color="#9900FFFF" Offset="1"/>
+    </LinearGradientBrush>
+</ResourceDictionary>

@@ -1,0 +1,18 @@
+﻿<base:WidgetBase x:Class="StreetViewWidget.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget;assembly=ESRI.SilverlightViewer">
+    <StackPanel Margin="4,4,4,4" Orientation="Vertical">
+        <TextBlock Text="Click on Map to Open Street View Window" Margin="4,4,4,4" Foreground="DarkBlue"></TextBlock>
+        <TextBlock Text="* Content provided by MapChannels.com" Margin="4,4,4,4" Foreground="DarkOrchid" FontStyle="Italic"></TextBlock>
+
+        <TextBlock Text="Select Content Form:" Margin="4,8,4,2"></TextBlock>
+        <ComboBox x:Name="comboxViewContent" Margin="24,2,8,8" Width="200" SelectedIndex="0" HorizontalAlignment="Left">
+            <ComboBoxItem Content="Dual Viewer" Tag="DualViewer" />
+            <ComboBoxItem Content="Bing Maps" Tag="BingMaps" />
+            <ComboBoxItem Content="Google Map" Tag="GoogleMap" />
+            <ComboBoxItem Content="Street View Only" Tag="StreetViewOnly" />
+            <ComboBoxItem Content="Street View &amp; Google Map" Tag="StreetViewGoogleMap" />
+        </ComboBox>
+      </StackPanel>
+</base:WidgetBase>

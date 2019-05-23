@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WidgetConfig>
+   <!-- 
+  If the units of the base map projection is decimal degrees, call the Project method in 
+  GeometryService to convert a geometry to a projection that uses a measured units (e.g. meters). 
+  it is recommended to use an appropriate projection (ProjectToWKID) for your area.
+  -->
+   <Username>pjiang</Username>
+   <Password>w0rk4ESRI</Password>
+   <!-- A local projection WKID -->
+   <ProjectToWKID>102100</ProjectToWKID>
+   <!--PDF, Excel, or XML-->
+   <ReportFormat>PDF</ReportFormat>
+   
+   <!--
+  For These Report Templates, only PDF format report is available
+    Site Map Report
+    Site Map i-cubed 0.4 Miles Wide
+    Site Map i-cubed 0.8 Miles Wide
+    Site Map i-cubed 1.6 Miles Wide
+    Site Details Map
+  And for "Executive Summary Profile" report, Excel format is not avavilable
+  -->
+</WidgetConfig>

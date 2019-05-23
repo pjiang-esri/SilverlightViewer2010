@@ -1,0 +1,30 @@
+﻿<base:WidgetBase x:Class="ESRI.SilverlightViewer.UIWidget.TOCWidget"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget"
+    xmlns:esrik="clr-namespace:ESRI.ArcGIS.Client.Toolkit;assembly=ESRI.ArcGIS.Client.Toolkit"
+    xmlns:core ="clr-namespace:ESRI.SilverlightViewer.Controls;assembly=ESRI.SilverlightViewer.Controls"
+    xmlns:ctrl="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" MaxHeight="500">
+   
+    <base:WidgetBase.Resources>
+        <Style x:Key="TreeViewItemsContainerStyle" TargetType="ctrl:TreeViewItem">
+            <Setter Property="Margin" Value="0,20,0,-20"/>
+        </Style>
+        <DataTemplate x:Key="SymbolTreeNode">
+            <StackPanel Orientation="Horizontal" Margin="0,-2,0,-2">
+                <Image Source="{Binding ImageSource}" Stretch="None" Width="36" Margin="0,0,0,0"></Image>
+                <TextBlock Text="{Binding Label}" Margin="4,0,0,0" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </base:WidgetBase.Resources>
+   <Grid Margin="0,0,0,0">
+      <ctrl:TreeView x:Name="MapContentTree" Margin="0,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Height="Auto" BorderThickness="0"></ctrl:TreeView>
+      <Border x:Name="ContextMenuBlock" CornerRadius="4" BorderThickness="1" BorderBrush="DarkGray" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed">
+         <StackPanel Orientation="Vertical" Margin="2,2,2,2">
+            <core:ContextMenuItem x:Name="MenuItemZoomTo" IconSource="../Images/buttons/menu_zoom.png" UseSmallIcon="True" Text="Zoom To" Click="MenuItemZoomTo_Click"></core:ContextMenuItem>
+            <core:ContextMenuItem x:Name="MenuItemShowAll" IconSource="../Images/buttons/menu_check.png" UseSmallIcon="True" Text="Show All" Click="MenuItemToggleGroup_Click"></core:ContextMenuItem>
+            <core:ContextMenuItem x:Name="MenuItemShowNon" IconSource="../Images/buttons/menu_remove.png" UseSmallIcon="True" Text="Show None" Click="MenuItemToggleGroup_Click"></core:ContextMenuItem>
+         </StackPanel>
+      </Border>
+   </Grid>
+</base:WidgetBase>

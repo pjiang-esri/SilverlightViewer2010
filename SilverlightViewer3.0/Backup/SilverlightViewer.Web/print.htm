@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ArcGIS Template Viewer for Silverlight 2.2</title>
+
+    <script language="javascript" type="text/javascript">
+        function OnPageLoad() {
+            var content = opener.getPrintContent();
+            document.getElementById("divPrintContent").innerHTML = content;
+        }
+    </script>
+
+    <style type="text/css">        
+        .ValueTable
+        {
+            font-size: 9px;
+            font-family: Arial;
+            padding: 4px;
+        }
+        
+        .TableTitle
+        {
+            font-size: 10px;
+            font-weight: 800;
+            text-align: center;
+            padding: 4px 0px 4px 0px;
+        }
+    </style>
+</head>
+<body onload="javascript: OnPageLoad();">
+    <form id="form1" runat="server">
+    <div id="divPrintContent">
+    </div>
+    </form>
+</body>
+</html>

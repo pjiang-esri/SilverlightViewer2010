@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WidgetConfig>
+   <ChartingLayers>
+      <Layer title="Household Net Worth" restURL="http://server.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Median_Net_Worth/MapServer/3">
+         <QueryFields>NAME,STATE_NAME,ST_ABBREV</QueryFields>
+         <!-- Dependent Variables -->
+         <OutputFields>NW0_CY,NW15_CY,NW35_CY,NW50_CY,NW75_CY,NW100_CY,NW150_CY,NW250_CY,NW500_CY,NW1M_CY</OutputFields>
+         <OutputLabels>&lt;$15k,$15k-$35k,$35k-$50k,$50k-$75k,$75k-$100k,$100k-$150k,$150k-$250k,$250k-$500k,$500k-$1Mil,&gt;1Mil</OutputLabels>
+         <MapTipTemplate>Title=2010 Household Net Worth;Content={#NW0_CY}:less than $15k\n{#NW15_CY}:$15k-$35k\n{#NW35_CY}:$35k-$50k\n{#NW50_CY}:$50k-$75k\n{#NW75_CY}:$75k-$100k\n{#NW100_CY}:$100k-$150k\n{#NW150_CY}:$150k-$250k\n{#NW250_CY}:$250k-$500k\n{#NW500_CY}:$500k-$1Mil\n{#NW1M_CY}:&gt; 1 Million</MapTipTemplate>
+         <!-- type: Bar, Column, or Pie-->
+         <ChartOutput type="Column" independentField="NAME" independentAxisTitle="County" dependentAxisTitle="Net Worth" dependentIsPercentage="false" />
+      </Layer>
+      <Layer title="Population Diversity" restURL="http://server.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Percent_Under_18/MapServer/3">
+         <QueryFields>NAME,STATE_NAME,ST_ABBREV</QueryFields>
+         <!-- Dependent Variables -->
+         <OutputFields>PPOPL18_CY,PPOP65U_CY</OutputFields>
+         <OutputLabels>Under 18 years old,Over 65 years old</OutputLabels>
+         <MapTipTemplate>Title=Population Diversity;Content=Under 18: {#PPOPL18_CY}%\nOver 65: {#PPOP65U_CY}%</MapTipTemplate>
+         <!-- type: Bar, Column, or Pie-->
+         <ChartOutput type="Pie" independentField="NAME" independentAxisTitle="County" dependentAxisTitle="Percentage" dependentIsPercentage="true"></ChartOutput>
+      </Layer>
+   </ChartingLayers>
+</WidgetConfig>

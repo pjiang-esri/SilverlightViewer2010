@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WidgetConfig>
+   <!-- 
+      YouTube Video Player Window Type
+      Optional Value: "Browser" or "Javascript"
+      Set to "Browser": YouTube videos will display in new browser window
+      Set to "Javascript": YouTube videos wil display in a floating Javascript window if the "Windowless" parameter
+                           for Silverlight Plugin is set to "true" in default.aspx or default.htm. *BUT please note:
+                           ONLY IE supports the Windowless = true mode 
+   --> 
+   <YouTubePlayerWindow>Javascript</YouTubePlayerWindow>
+   
+   <!-- 
+      YouTube Video Player Size
+      Optional Value: "Small", "Medium", "Large", or "HD720"
+      "Small"  - Player Window Width = 320
+      "Medium" - Player Window Width = 640
+      "Large"  - Player Window Width = 854
+      "HD720"  - Player Window Width = 1028
+   -->
+   <YouTubePlayerSize>Medium</YouTubePlayerSize>
+   
+   <!-- 
+      The maximum search radius valid for YouTube Search API is 1000 Kilometers
+      The maximum search radius valid for Twitter Search API is unavailable
+      The maximum search radius valid for Flickr is 32 Kilometers
+    -->
+   <!-- in Kilometers, Maximum Search Radius for YouTube and Twitter -->
+   <MaximumSearchRadius>160</MaximumSearchRadius>
+
+   <!-- in Kilometers, Default Search Radius for YouTube and Twitter -->
+   <DefaultSearchRadius>32</DefaultSearchRadius>
+</WidgetConfig>

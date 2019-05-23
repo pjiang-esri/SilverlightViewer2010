@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- enable = "BING" or "ArcGIS" -->
+<WidgetConfig enable="ArcGIS">
+   <BingLocator>
+      <Server>Staging</Server>
+      <Token>AqQhP2AiK43GUqeqzAZ2Vdld2qZwR18JqomKj1bfAIolrCh3R-n3l-TtYUCjj6wU</Token>
+   </BingLocator>
+   <ArcGISLocator>
+      <RESTURL>http://tasks.arcgisonline.com/ArcGIS/rest/services/Locators/TA_Address_NA_10/GeocodeServer</RESTURL>
+      <ParameterFields>
+         <Address>Address</Address>
+         <City>City</City>
+         <State>State</State>
+         <ZipCode>Zip</ZipCode>
+         <Zip4>Zip4</Zip4>
+         <Country>Country</Country>
+      </ParameterFields>
+      <SpatialReference>4326</SpatialReference>
+      <!-- Note, with ArcGIS Server 10.01 or later, reverse geocoding results have the same SR as the input point -->
+      <ReverseSearchDistance>10</ReverseSearchDistance>
+      <!-- Meters -->
+      <ReturnFirstCandidate>true</ReturnFirstCandidate>
+      <!-- Must be lowercase -->
+   </ArcGISLocator>
+   <LocationSymbol symbolImage="../Images/symbols/pin_red.png" offsetX="0" offsetY="24"/>
+</WidgetConfig>

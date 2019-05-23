@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WidgetConfig>
+    <QueryLayers>
+      <Layer title="Parcels" restURL="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/0">
+        <QueryFields>PARCELID</QueryFields> <!-- Used to build where string -->
+        <OutputFields>PARCELID</OutputFields>
+        <OutputLabels>PARCEL ID</OutputLabels>
+        <MapTipTemplate>Title=Parcel;Content=PIN: {#PARCELID}</MapTipTemplate>
+      </Layer>
+      <Layer title="Landuse" restURL="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/1">
+        <QueryFields>LANDUSE_CODE,LANDUSE_NAME</QueryFields>
+        <OutputFields>LANDUSE_CODE,LANDUSE_NAME</OutputFields>
+        <OutputLabels>CODE,NAME</OutputLabels>
+        <MapTipTemplate>Title=Landuse;Content=Code: {#LANDUSE_CODE}\nName: {#LANDUSE_NAME}</MapTipTemplate>
+      </Layer>
+      <Layer title="Zoning" restURL="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/2">
+        <QueryFields>ZONING_CODE,ZONING_NAME,ZONING_TYPE</QueryFields>
+        <OutputFields>ZONING_CODE,ZONING_NAME,ZONING_TYPE</OutputFields>
+        <OutputLabels>CODE,NAME,TYPE</OutputLabels>
+        <MapTipTemplate>Title=Zoning;Content=Code: {#ZONING_CODE}\nName: {#ZONING_NAME}\nType: {#ZONING_TYPE}</MapTipTemplate>
+      </Layer>
+    </QueryLayers>
+</WidgetConfig>

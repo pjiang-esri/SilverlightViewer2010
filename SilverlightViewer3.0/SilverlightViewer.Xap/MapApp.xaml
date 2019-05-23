@@ -1,0 +1,23 @@
+﻿<Application x:Class="ESRI.SilverlightViewer.MapApp"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:ESRI.SilverlightViewer.Controls;assembly=ESRI.SilverlightViewer.Controls">
+    <Application.Resources>
+        <Style x:Key="defaultAppToolbarStyle" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Canvas.Top" Value="30" />
+        </Style>
+
+        <Style x:Key="defaultSwitchMenuButtonStyle" TargetType="core:SwitchMenuButton">
+            <Setter Property="ContentPosition" Value="DOWN" />
+            <Setter Property="Margin" Value="25,0,25,0" />
+            <Setter Property="Canvas.ZIndex" Value="999" />
+        </Style>
+
+        <Style x:Key="defaultDropMenuButtonStyle" TargetType="core:DropMenuButton">
+            <Setter Property="ContentPosition" Value="DOWN" />
+            <Setter Property="Margin" Value="25,0,25,0" />
+            <Setter Property="Canvas.ZIndex" Value="1000" />
+        </Style>
+    </Application.Resources>
+</Application>

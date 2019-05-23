@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DefaultClrNameSpace>ESRI.Silverlight.MapViewer</DefaultClrNameSpace>
+    <AssemblyName>ESRI.SilverlightViewer</AssemblyName>
+    <RootNamespace>ESRI.SilverlightViewer</RootNamespace>
+    <AlwaysCompileMarkupFilesInSeparateDomain>false</AlwaysCompileMarkupFilesInSeparateDomain>
+    <ExpressionBlendCreationVersion>2.1.1760.0</ExpressionBlendCreationVersion>
+    <ProjectGuid>{9D613275-148C-4126-A1A8-F9075E15DA4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStdLib>true</NoStdLib>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartPageUrl>Default.html</StartPageUrl>
+    <XapOutputs>true</XapOutputs>
+    <XapFilename>ESRI.SilverlightViewer.xap</XapFilename>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>ESRI.SilverlightViewer.MapApp</SilverlightAppEntry>
+    <CreateTestPage>true</CreateTestPage>
+    <TestPageFileName>Default.html</TestPageFileName>
+    <DefineConstants>SILVERLIGHT</DefineConstants>
+    <SilverlightApplication>true</SilverlightApplication>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <PublishUrl>http://localhost/ESRI.Silverlight.MapViewer/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ESRI.ArcGIS.Client, Version=3.0.0.388, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.Client.Bing, Version=3.0.0.388, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.Client.Printing, Version=3.0.0.388, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit, Version=3.0.0.388, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Json, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <ApplicationDefinition Include="MapApp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Classes\Config\BookmarkConfig.cs" />
+    <Compile Include="Classes\Config\IncidentWidgetConfig.cs" />
+    <Compile Include="Classes\Config\IdentifyWidgetConfig.cs" />
+    <Compile Include="Classes\Config\EditWidgetConfig.cs" />
+    <Compile Include="Classes\Config\MeasurementConfig.cs" />
+    <Compile Include="Classes\Config\OverviewMapConfig.cs" />
+    <Compile Include="Classes\Config\PrintWidgetConfig.cs" />
+    <Compile Include="Classes\Config\SearchNearbyConfig.cs" />
+    <Compile Include="Classes\Config\SharedTypes.cs" />
+    <Compile Include="Classes\Config\TaskbarConfig.cs" />
+    <Compile Include="Classes\Config\WidgetConfigBase.cs" />
+    <Compile Include="Classes\Data\GeoFeatureCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Data\GeoFeatureCollectionView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Utility\PageScriptHelper.cs" />
+    <Compile Include="Classes\Utility\ScaleConverter.cs" />
+    <Compile Include="Classes\Utility\AddressHelper.cs" />
+    <Compile Include="Classes\Utility\CloneExtension.cs" />
+    <Compile Include="Classes\Utility\SymbolTypeGroup.cs" />
+    <Compile Include="Classes\Utility\GeocodeTool.cs" />
+    <Compile Include="Classes\Utility\ArcGISLayerInfo.cs" />
+    <Compile Include="Classes\Utility\GeometryTool.cs" />
+    <Compile Include="Classes\Utility\SymbolType.cs" />
+    <Compile Include="Classes\Utility\UnitsHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Widget\EventCenter.cs" />
+    <Compile Include="Classes\Widget\FeaturesGrid.cs" />
+    <Compile Include="Classes\Widget\IDrawObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Widget\MapBinder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Widget\MapTipPopup.cs" />
+    <Compile Include="Classes\Widget\TaskbarBase.cs" />
+    <Compile Include="Classes\Widget\WidgetManager.cs" />
+    <Compile Include="Generic\MapNavigator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generic\PrintMapPage.cs" />
+    <Compile Include="MapApp.xaml.cs">
+      <DependentUpon>MapApp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Config\ApplicationConfig.cs" />
+    <Compile Include="Classes\Config\LocatorConfig.cs" />
+    <Compile Include="Classes\Config\MapConfig.cs" />
+    <Compile Include="Classes\Config\QueryWidgetConfig.cs" />
+    <Compile Include="Classes\Utility\StringHelper.cs" />
+    <Compile Include="Classes\Utility\QueryTool.cs" />
+    <Compile Include="MapPage.xaml.cs">
+      <DependentUpon>MapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Symbols\SymbolResources.cs" />
+    <Compile Include="Widgets\BookmarkWidget.xaml.cs">
+      <DependentUpon>BookmarkWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\EditWidget.xaml.cs">
+      <DependentUpon>EditWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\IncidentWidget.xaml.cs">
+      <DependentUpon>IncidentWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\IdentifyWidget.xaml.cs">
+      <DependentUpon>IdentifyWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\MeasureWidget.xaml.cs">
+      <DependentUpon>MeasureWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\OverviewMapWidget.xaml.cs">
+      <DependentUpon>OverviewMapWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\PrintWidget.xaml.cs">
+      <DependentUpon>PrintWidget.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Widgets\QueryWidget.xaml.cs">
+      <DependentUpon>QueryWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\LocatorWidget.xaml.cs">
+      <DependentUpon>LocatorWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\SearchNearbyWidget.xaml.cs">
+      <DependentUpon>SearchNearbyWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\TaskbarWidget.xaml.cs">
+      <DependentUpon>TaskbarWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\TOCWidget.xaml.cs">
+      <DependentUpon>TOCWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Widget\WidgetBase.cs" />
+    <Compile Include="Classes\Widget\WidgetTabButton.cs" />
+    <Resource Include="Generic\PrintMapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="Generic\MapNavigator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Include="Images\icons\i_hybridmap.png" />
+    <Resource Include="Images\icons\i_topography.png" />
+    <Resource Include="Images\icons\i_query.png" />
+    <Resource Include="Images\buttons\btn_clear.png" />
+    <Resource Include="Images\symbols\flag_blue.png" />
+    <Resource Include="Images\symbols\flag_green.png" />
+    <Resource Include="Images\symbols\flag_orange.png" />
+    <Resource Include="Images\symbols\flag_red.png" />
+    <Resource Include="Images\symbols\flag_yellow.png" />
+    <Resource Include="Images\symbols\pin_blue.png" />
+    <Resource Include="Images\symbols\pin_green.png" />
+    <Resource Include="Images\symbols\pin_orange.png" />
+    <Resource Include="Images\symbols\pin_red.png" />
+    <Resource Include="Images\symbols\pin_yellow.png" />
+    <Resource Include="Symbols\EsriSymbols.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Themes\AliceBlue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Themes\CornsilkGray.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Themes\BurlyWood.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Themes\Aquamarine.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Themes\BlueBanner.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Themes\CornerSpring.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Themes\VividSummer.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\LargeBlueWave.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\SmallBlueWave.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\BookmarkWidget.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\EditWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\IncidentWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\IdentifyWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\MeasureWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\OverviewMapWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\PrintWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widgets\QueryWidget.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\LocatorWidget.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\SearchNearbyWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\TaskbarWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\TOCWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\i_about.png" />
+    <Resource Include="Images\icons\i_bookmark.png" />
+    <Resource Include="Images\icons\i_bookmark_add.png" />
+    <Resource Include="Images\icons\i_camera.png" />
+    <Resource Include="Images\icons\i_clear.png" />
+    <Resource Include="Images\icons\i_clock.png" />
+    <Resource Include="Images\icons\i_draw.png" />
+    <Resource Include="Images\icons\i_draw_freeline.png" />
+    <Resource Include="Images\icons\i_draw_freepoly.png" />
+    <Resource Include="Images\icons\i_draw_line.png" />
+    <Resource Include="Images\icons\i_draw_point.png" />
+    <Resource Include="Images\icons\i_draw_poly.png" />
+    <Resource Include="Images\icons\i_draw_rect.png" />
+    <Resource Include="Images\icons\i_draw_text.png" />
+    <Resource Include="Images\icons\i_flag.png" />
+    <Resource Include="Images\icons\i_folder.png" />
+    <Resource Include="Images\icons\i_globe.png" />
+    <Resource Include="Images\icons\i_help.png" />
+    <Resource Include="Images\icons\i_home.png" />
+    <Resource Include="Images\icons\i_info.png" />
+    <Resource Include="Images\icons\i_mailbox.png" />
+    <Resource Include="Images\icons\i_measure.png" />
+    <Resource Include="Images\icons\i_nav.png" />
+    <Resource Include="Images\icons\i_options.png" />
+    <Resource Include="Images\icons\i_overview.png" />
+    <Resource Include="Images\icons\i_pan.png" />
+    <Resource Include="Images\icons\i_piechart.png" />
+    <Resource Include="Images\icons\i_print.png" />
+    <Resource Include="Images\icons\i_pushpin.png" />
+    <Resource Include="Images\icons\i_resources.png" />
+    <Resource Include="Images\icons\i_roof_point.png" />
+    <Resource Include="Images\icons\i_satellite.png" />
+    <Resource Include="Images\icons\i_search.png" />
+    <Resource Include="Images\icons\i_searchgraphical.png" />
+    <Resource Include="Images\icons\i_searchtext.png" />
+    <Resource Include="Images\icons\i_shuttle.png" />
+    <Resource Include="Images\icons\i_table.png" />
+    <Resource Include="Images\icons\i_widget.png" />
+    <Resource Include="Images\icons\i_zoomfull.png" />
+    <Resource Include="Images\icons\i_zoomin.png" />
+    <Resource Include="Images\icons\i_zoomnext.png" />
+    <Resource Include="Images\icons\i_zoomout.png" />
+    <Resource Include="Images\icons\i_zoomback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\tab_locator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\tab_results.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\i_locate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\i_streets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\i_mapcontent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\i_imagery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\tab_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\tab_queryattribute.png" />
+    <Resource Include="Images\buttons\tab_queryspatial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\tab_searchnearby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\i_searchnearby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\btn_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\i_layers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\i_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\edit_addtoselection.png" />
+    <Resource Include="Images\buttons\edit_autocompletepolygontool.png" />
+    <Resource Include="Images\buttons\edit_envelopetool.png" />
+    <Resource Include="Images\buttons\edit_freehandpolygontool.png" />
+    <Resource Include="Images\buttons\edit_freehandpolylinetool.png" />
+    <Resource Include="Images\buttons\edit_linetool.png" />
+    <Resource Include="Images\buttons\edit_markertool.png" />
+    <Resource Include="Images\buttons\edit_newselection.png" />
+    <Resource Include="Images\buttons\edit_polygontool.png" />
+    <Resource Include="Images\buttons\edit_polylinetool.png" />
+    <Resource Include="Images\buttons\edit_removefromselection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\edit_clearselection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\edit_attributes.png" />
+    <Resource Include="Images\buttons\edit_merge.png" />
+    <Resource Include="Images\buttons\edit_save.png" />
+    <Resource Include="Images\buttons\edit_cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\edit_vertices.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\edit_reshape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\btn_expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\tab_printdata.png" />
+    <Resource Include="Images\buttons\tab_printmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\i_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\menu_check.png" />
+    <Resource Include="Images\buttons\menu_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\menu_zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttons\tab_printPdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SilverlightControls3.0\SilverlightViewer.Controls\SilverlightViewer.Controls.csproj">
+      <Project>{DB4F64FD-8D11-460E-9407-412776F157A8}</Project>
+      <Name>SilverlightViewer.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

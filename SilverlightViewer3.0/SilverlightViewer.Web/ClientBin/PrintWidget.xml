@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WidgetConfig>
+   <!-- ArcGIS Server 10.1 Export Map GP Service URL -->
+   <ExportMapTaskUrl>http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task</ExportMapTaskUrl>
+</WidgetConfig>

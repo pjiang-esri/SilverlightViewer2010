@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AppConfig>
+   <ApplicationLogo>../Images/logo.png</ApplicationLogo>
+   <ApplicationTitle>ArcGIS Sample Viewer for Silverlight</ApplicationTitle>
+   <ApplicationSubTitle>Powered by ArcGIS Server</ApplicationSubTitle>
+   <ApplicationHelpMenu text="Help" icon="../Images/icons/i_help.png">
+      <Links>
+         <Link title="ArcGIS Online" icon="../Images/icons/i_link.png" url="http://www.esri.com/software/arcgis/arcgisonline/index.html" />
+         <Link title="ArcGIS API" icon="../Images/icons/i_link.png" url="http://help.arcgis.com/en/webapi/silverlight/index.html" />
+         <Link title="User Help" icon="../Images/icons/i_help.png" url="http://localhost:52014/Help.htm" />
+      </Links>
+      <About title="About" icon="../Images/icons/i_about.png" text="ArcGIS Sample Viewer 2.2\nfor Silverlight\nCreator: Ping Jiang\nhttp://linkd.in/nq1xsl"></About>
+   </ApplicationHelpMenu>
+
+   <!-- Geometry Service REST URL - used to simplify or reproject geometry -->
+   <GeometryService>http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer</GeometryService>
+
+   <Map>
+      <!--InitialExtent xmin="-8878462" ymin="4930820" xmax="-8027433" ymax="5697234" spatialReference="3857"></InitialExtent-->
+      <!--FullExtent xmin="-8878462" ymin="4930820" xmax="-8027433" ymax="5697234" spatialReference="3857"></FullExtent-->
+      <InitialExtent xmin="-85.975" ymin="37.880" xmax="-85.378" ymax="38.498" spatialReference="4326"></InitialExtent>
+      <FullExtent xmin="-85.975" ymin="37.880" xmax="-85.378" ymax="38.498" spatialReference="4326"></FullExtent>
+      <!-- BING or ArcGIS -->
+      <BaseMap enable="ArcGIS">
+         <BingMap>
+            <!-- Staging or Production -->
+            <Server>Staging</Server>
+            <Token>AqQhP2AiK43GUqeqzAZ2Vdld2qZwR18JqomKj1bfAIolrCh3R-n3l-TtYUCjj6wU</Token>
+            <Layers>
+               <Layer title="Road" type="Road" visibleInitial="true" opacity="1.0" icon="../Images/icons/i_streets.png"></Layer>
+               <Layer title="Aerial" type="Aerial" visibleInitial="false" opacity="1.0" icon="../Images/icons/i_imagery.png"></Layer>
+               <Layer title="Hybrid" type="AerialWithLabels" visibleInitial="false" opacity="1.0" icon="../Images/icons/i_hybridmap.png"></Layer>
+            </Layers>
+         </BingMap>
+         <ArcGISMap>
+            <Layers>
+               <!-- A base map layer must be a "Cached" or "Image" map service -->
+               <Layer title="Streets" serviceType="Cached" visibleInitial="true" showLabel="false" restURL="http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer" icon="../Images/icons/i_streets.png"></Layer>
+               <Layer title="Imagery" serviceType="Cached" visibleInitial="false" showLabel="true" restURL="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer" icon="../Images/icons/i_imagery.png"></Layer>
+               <Layer title="Topo" serviceType="Cached" visibleInitial="false" showLabel="false" restURL="http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer" icon="../Images/icons/i_topography.png"></Layer>
+            </Layers>
+            <!---Label Layer is used to display labels over other base map layers, e.g. an Imagery layer -->
+            <LabelLayer title="Label" serviceType="Cached" visibleInitial="false" opacity="1.0" restURL="http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer"></LabelLayer>
+         </ArcGISMap>
+      </BaseMap>
+      <LivingMaps>
+         <Layer title="Louisville Land Records" serviceType="Dynamic" opacityBar="true" opacity="0.5" visibleInitial="true" toggleLayer="true" visibleLayers="*" refreshRate="0" restURL="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer" proxyURL="" token=""></Layer>
+         <Layer title="Louisville Safety" serviceType="Dynamic" opacityBar="false" opacity="1.0" visibleInitial="true" toggleLayer="false" visibleLayers="0,1,2" refreshRate="0" restURL="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_PublicSafety_Louisville/MapServer" proxyURL="" token=""></Layer>
+         <!--<Layer title="Field Crew" serviceType="Dynamic" opacityBar="false" visibleInitial="true" toggleLayer="false" visibleLayers="*" refreshRate="30" restURL="http://ping3358/ArcGIS/rest/services/FieldCrew/MapServer" proxyURL="" token=""></Layer>-->
+         <Layer title="Incidents" serviceType="Feature" opacityBar="false" opacity="1.0" visibleInitial="true" refreshRate="0" restURL="http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/SanFrancisco/311Incidents/MapServer/0" proxyURL="" token="">
+            <FeatureLayerExtension>
+               <UseCluster>true</UseCluster>
+               <WhereString>status=1</WhereString>
+               <EnvelopeFilter xmin="-122.0" ymin="37.0" xmax="-122.5" ymax="38.0" spatialReference="4326" />
+               <!-- For an earlier verion before ArcGIS server 9.4. Leave SymbolImage empty if it is a polygon/polyline layer -->
+               <SymbolImage></SymbolImage>
+               <OutFields>req_id,req_type,req_date,address</OutFields>
+            </FeatureLayerExtension>
+         </Layer>
+      </LivingMaps>
+   </Map>
+
+   <!-- dockPosition = None, Top, or Bottom. It is combinedly used with the application Theme -->
+   <Taskbar initialTop="10" initialLeft="100" barWidth="480" barHeight="70" dockHeight="55" dockPosition="Top">
+      <MapToolButtons>
+         <ToolButton title="Pan" isDefault="true" mapAction="Pan" buttonImage="../Images/icons/i_pan.png"/>
+         <ToolButton title="Zoom In" mapAction="ZoomIn" buttonImage="../Images/icons/i_zoomin.png"/>
+         <ToolButton title="Zoom Out" mapAction="ZoomOut" buttonImage="../Images/icons/i_zoomout.png"/>
+         <ToolButton title="Identify" mapAction="Identify" buttonImage="../Images/icons/i_info.png"/>
+      </MapToolButtons>
+   </Taskbar>
+
+   <Widgets>
+      <Widget className="ESRI.SilverlightViewer.UIWidget.TOCWidget" title="Map Content" openInitial="true" hasGraphics="false" initialTop="150" initialLeft="200" icon="../Images/icons/i_mapcontent.png" />
+      <Widget className="ESRI.SilverlightViewer.UIWidget.BookmarkWidget" title="Bookmarks" openInitial="false" hasGraphics="false" initialTop="200" initialLeft="200" icon="../Images/icons/i_bookmark.png" configFile="BookmarkWidget.xml"/>
+      <Widget className="ESRI.SilverlightViewer.UIWidget.IdentifyWidget" title="Identify Results" openInitial="false" hasGraphics="true" initialTop="200" initialLeft="300" icon="../Images/icons/i_info.png" configFile="IdentifyWidget.xml" />
+      <Widget className="ESRI.SilverlightViewer.UIWidget.MeasureWidget" title="Measure" openInitial="false" hasGraphics="true" initialTop="400" initialLeft="500" icon="../Images/icons/i_measure.png" configFile="MeasureWidget.xml"/>
+      <Widget className="ESRI.SilverlightViewer.UIWidget.LocatorWidget" title="Locator" openInitial="false" hasGraphics="true" initialTop="200" initialLeft="400" icon="../Images/icons/i_locate.png" configFile="LocatorWidget.xml"/>
+      <Widget className="ESRI.SilverlightViewer.UIWidget.IncidentWidget" title="Earthquake Since 1970" openInitial="false" hasGraphics="false" initialTop="350" initialLeft="300" icon="../Images/i_warning.png" configFile="IncidentWidget.xml"/>
+      <Widget className="ESRI.SilverlightViewer.UIWidget.QueryWidget" title="Query" openInitial="false" hasGraphics="true" initialTop="250" initialLeft="300" icon="../Images/icons/i_query.png" configFile="QueryWidget.xml"/>
+      <Widget className="ESRI.SilverlightViewer.UIWidget.SearchNearbyWidget" title="Search Nearby" openInitial="false" hasGraphics="true" initialTop="250" initialLeft="400" icon="../Images/icons/i_searchnearby.png" configFile="SearchNearby.xml"/>
+      <Widget className="RedlineWidget.dll;RedlineWidget.MainPage" title="Redline" openInitial="false" hasGraphics="true" initialTop="400" initialLeft="500" icon="../Images/icons/i_draw.png" configFile="RedlineWidget.xml"/>
+      <Widget className="StreetViewWidget.dll;StreetViewWidget.MainPage" title="Street View" openInitial="false" hasGraphics="true" initialTop="300" initialLeft="400" icon="../Images/i_streetview.png" configFile="StreetViewWidget.xml"/>
+      <Widget className="SocialMediaWidget.dll;SocialMediaWidget.MainPage" title="Social Media" openInitial="false" hasGraphics="true" initialTop="350" initialLeft="200" icon="../Images/i_socialmedia.png" configFile="SocialMediaWidget.xml"/>
+      <Widget className="GeoRSSWidget.dll;GeoRSSWidget.MainPage" title="Earthquakes" openInitial="false" hasGraphics="true" initialTop="350" initialLeft="300" icon="../Images/i_georss.png" configFile="GeoRSSWidget.xml"/>
+      <Widget className="ESRI.SilverlightViewer.UIWidget.EditWidget" title="Editor" openInitial="false" hasGraphics="false" initialTop="400" initialLeft="400" icon="../Images/icons/i_edit.png" configFile="EditWidget.xml"/>
+      <Widget className="ESRI.SilverlightViewer.UIWidget.PrintWidget" title="Print" openInitial="false" hasGraphics="false" initialTop="350" initialLeft="400" icon="../Images/icons/i_print.png" configFile = "PrintWidget.xml"/>
+   </Widgets>
+
+   <!-- OverviewMap Widget configuratiion file -->
+   <OverviewMapConfigFile>OverviewWidget.xml</OverviewMapConfigFile>
+
+   <!-- Available Themes: AliceBlue, BurlyWood, Aquamarine, BlueBanner, CornsilkGray, VividSummer, CornerSpring, LargeBlueWave, SmallBlueWave -->
+   <Theme>AliceBlue</Theme>
+</AppConfig>

@@ -1,0 +1,52 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget"
+    xmlns:view="clr-namespace:ESRI.SilverlightViewer.Generic"
+    xmlns:core="clr-namespace:ESRI.SilverlightViewer.Controls;assembly=ESRI.SilverlightViewer.Controls">
+    <Style x:Key="TaskbarStyle" TargetType="base:TaskbarBase">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <GradientStop Color="Cornsilk" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AppToolbarStyle" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+
+    <Style x:Key="SwitchMenuButtonStyle" TargetType="core:SwitchMenuButton">
+        <Setter Property="ContentPosition" Value="DOWN" />
+        <Setter Property="Margin" Value="25,0,25,0" />
+        <Setter Property="Canvas.ZIndex" Value="999" />
+    </Style>
+
+    <Style x:Key="DropMenuButtonStyle" TargetType="core:DropMenuButton">
+        <Setter Property="ContentPosition" Value="DOWN" />
+        <Setter Property="Margin" Value="25,0,25,0" />
+        <Setter Property="Canvas.ZIndex" Value="1000" />
+    </Style>
+
+    <Style x:Key="NavigatorStyle" TargetType="view:MapNavigator">
+        <Setter Property="Margin" Value="20,80,0,0"/>
+        <Setter Property="Background" Value="#F0AAA990"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="WidgetStyle" TargetType="base:WidgetBase">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush>
+                    <GradientStop Color="Cornsilk" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////
+//
+// CONFIGURATION:
+// SelectionMethod for AOI (Area of Interest) can be "extent" or "draw"
+// DataExtractionService is the url to the GP service
+//
+////////////////////////////////////////////////////////////////////////////////
+-->
+
+<WidgetConfig>
+   <AOISelectionMethod>extent</AOISelectionMethod>
+   <DataExtractionServices>
+      <Service title="Water Data" restURL="http://YOURSERVER/ArcGIS/rest/services/WaterUtility/ExtractDataTaskWater/GPServer/ExtractDataTaskWater" />
+      <Service title="Sewer Data" restURL="http://YOURSERVER/ArcGIS/rest/services/WaterUtility/ExtractDataTaskSewer/GPServer/ExtractDataTaskSewer" />
+   </DataExtractionServices>
+</WidgetConfig>
+
+<!--
+    To learn how to create a Data Extraction GP service, please see document at
+    http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#//002v00000019000000.htm
+-->

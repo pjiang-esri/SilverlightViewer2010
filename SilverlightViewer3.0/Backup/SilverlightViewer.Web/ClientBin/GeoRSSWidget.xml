@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WidgetConfig>
+   <!--http://www.prh.noaa.gov/ptwc/feeds/ptwc_rss_pacific.xml-->
+   <Source>http://earthquake.usgs.gov/eqcenter/catalogs/eqs7day-M5.xml</Source>
+   <!-- A string contained in the Title of RSS items -->
+   <Filter></Filter>
+   <OutputFields>description</OutputFields>
+   <TitleField>title</TitleField>
+   <LinkField>link</LinkField>
+   <!-- Seconds -->
+   <RefreshRate>6000</RefreshRate>
+   <!-- for point type only -->
+   <SymbolImage>/GeoRSSWidget;component/Images/i_georss.png</SymbolImage>
+</WidgetConfig>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="SilverlightViewer2.Web" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>SilverlightViewer BING Token Utility</display-name><context-param>
+		<description>Username for accessing BING map token service</description>
+		<param-name>BING_Username</param-name>
+		<param-value>138685</param-value>
+	</context-param><context-param>
+		<description>Password for accessing BING map token service</description>
+		<param-name>BING_Password</param-name>
+		<param-value>ESRIve.10</param-value>
+	</context-param><context-param>
+		<description>Staging or Production</description>
+		<param-name>BING_ServiceServer</param-name>
+		<param-value>Staging</param-value>
+	</context-param>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+	</welcome-file-list>
+</web-app>

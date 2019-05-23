@@ -1,0 +1,25 @@
+﻿<base:TaskbarBase x:Class="ESRI.SilverlightViewer.UIWidget.TaskbarWidget"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget"
+    xmlns:core="clr-namespace:ESRI.SilverlightViewer.Controls;assembly=ESRI.SilverlightViewer.Controls"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Canvas Margin="0,0,0,0">
+        <StackPanel x:Name="StackTitleBar" Canvas.Top="0" Canvas.Left="4" Orientation="Horizontal">
+            <Image x:Name="LogoImage" Margin="4,4,4,4" VerticalAlignment="Center" Source="{Binding Path=LogoSource}"></Image>
+            <StackPanel Orientation="Vertical" Margin="4,4,4,4" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <TextBlock x:Name="TextTitle" Margin="0,0,8,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Path=AppTitle}" FontSize="16">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="#FFFFFFFF" ShadowDepth="0" BlurRadius="20" />
+                        </TextBlock.Effect>
+                </TextBlock>
+                <Path x:Name="TitleUnderline" Margin="0,0,0,0" Stroke="#FF999999" StrokeThickness="2" HorizontalAlignment="Stretch" Stretch="UniformToFill" VerticalAlignment="Center" Height="2" Data="M 0.0,0.0 L 1.0,0.0"></Path>
+                <TextBlock x:Name="TextSubTitle" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Path=SubTitle}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="StackToolbar" Style="{StaticResource defaultAppToolbarStyle}">
+            <core:DropMenuButton x:Name="WidgetMenuButton" Width="50" Height="50" Text="Widgets" ButtonShape="Square" ImageSource="../Images/icons/i_widget.png" MenuItemClick="WidgetMenuItem_Click" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Style="{StaticResource defaultDropMenuButtonStyle}"></core:DropMenuButton>
+        </StackPanel>
+        <core:PagedStackPanel x:Name="DockWidgetsStack" Canvas.Top="6" Canvas.Left="{Binding BarWidth}" MaxWidth="360" Height="42" Orientation="Horizontal"></core:PagedStackPanel>
+    </Canvas>
+</base:TaskbarBase>

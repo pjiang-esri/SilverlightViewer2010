@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+  StoragePlace = "Application" or "Site"
+  "Application": Settings are stored as per-application, per-computer, and per-user settings
+  "Site": Settings are stored as per-domain, per-computer, and per-user settings
+  -->
+<WidgetConfig storagePlace="Application">
+  <Bookmarks>
+    <Bookmark name="Louisville, Kentucky">
+      <extent xmin="-85.975" ymin="37.880" xmax="-85.378" ymax="38.498" spatialReference="4326"></extent>
+    </Bookmark>
+    <Bookmark name="San Francisco, California">
+      <extent xmin="-122.50" ymin="37.73" xmax="-122.39" ymax="37.80" spatialReference="4326"></extent>
+    </Bookmark>
+  </Bookmarks>
+</WidgetConfig>

@@ -1,0 +1,9 @@
+﻿<base:WidgetBase x:Class="ESRI.SilverlightViewer.UIWidget.IdentifyWidget"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled"
+    IsResizable="True" AllowClickGraphics="True" MaxHeight="400" ClearButtonImage="../Images/buttons/btn_clear.png">
+    <base:FeaturesGrid x:Name="IdentifyResultGrid" Margin="0,0,0,0" DataSources="{Binding Path=FeatureSets}" SelectedItemChange="IdentifyResultGrid_SelectedItemChange"></base:FeaturesGrid>
+</base:WidgetBase>

@@ -1,0 +1,108 @@
+﻿<base:WidgetBase x:Class="ESRI.SilverlightViewer.UIWidget.QueryWidget"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget"
+    VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled"
+    MinWidth="320" MaxWidth="600" AllowClickGraphics="True" ClearButtonImage="../Images/buttons/btn_clear.png">
+    <base:WidgetBase.TabButtons>
+        <base:WidgetTabButton ButtonImage="../Images/buttons/tab_queryattribute.png" Title="Attribute Query" ContentPanel="PanelAttributeQuery"/>
+        <base:WidgetTabButton ButtonImage="../Images/buttons/tab_queryspatial.png" Title="Spatial Query" ContentPanel="PanelSpatialQuery"/>
+        <base:WidgetTabButton ButtonImage="../Images/buttons/tab_results.png" Title="Query Results"  ContentPanel="PanelQueryResult"/>
+    </base:WidgetBase.TabButtons>
+    <Grid Margin="0,0,0,0">
+        <StackPanel x:Name="PanelAttributeQuery" Orientation="Vertical" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="2,4,2,4">
+                <TextBlock Text="Layer:" Margin="0,0,8,0" Width="48" TextAlignment="Right"></TextBlock>
+                <ComboBox x:Name="lstAttQueryLayer" Width="240" SelectionChanged="SearchLayer_SelectionChanged"></ComboBox>
+            </StackPanel>
+            <CheckBox x:Name="checkWithinMap" Content="Within the Map Extent" HorizontalAlignment="Left" Margin="58,4,2,4"/>
+            <StackPanel Orientation="Horizontal" Margin="2,4,2,4">
+                <TextBlock Text="Fields:" Margin="0,0,8,0" Width="48" TextAlignment="Right" VerticalAlignment="Top"></TextBlock>
+                <ListBox x:Name="lstAttQueryField" Width="240" Height="64" SelectionChanged="SearchField_SelectionChanged"></ListBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2,4,2,4">
+                <TextBlock Text="Where:" Margin="0,0,8,0" Width="48" TextAlignment="Right" VerticalAlignment="Top"></TextBlock>
+                <TextBox x:Name="txtAttQueryWhere" Width="240" Margin="0,0,8,0"></TextBox>
+                <Button x:Name="btnAttWhereClear" Width="50" Content="Clear" Click="WhereClearButton_Click" />
+            </StackPanel>
+            <Grid x:Name="OperatorsGrid" Margin="2,4,2,4" Width="240">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnOperLike" Margin="1,1,1,1" Grid.Row="0" Grid.Column="0" Content="Like" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperAnd"  Margin="1,1,1,1" Grid.Row="0" Grid.Column="1" Content="And" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperOr"   Margin="1,1,1,1" Grid.Row="0" Grid.Column="2" Content="Or" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperNot"  Margin="1,1,1,1" Grid.Row="0" Grid.Column="3" Content="Not" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperIs"   Margin="1,1,1,1" Grid.Row="0" Grid.Column="4" Content="Is" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperNULL" Margin="1,1,1,1" Grid.Row="0" Grid.Column="5" Content="NULL" Click="OperatorButton_Click" />
+
+                <Button x:Name="btnOperEqual" Margin="1,1,1,1" Grid.Row="1" Grid.Column="0" Content="=" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperNotEqual" Margin="1,1,1,1" Grid.Row="1" Grid.Column="1" Content="&lt;&gt;" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperGreater" Margin="1,1,1,1" Grid.Row="1" Grid.Column="2" Content="&gt;" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperLess" Margin="1,1,1,1" Grid.Row="1" Grid.Column="3" Content="&lt;" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperGtEqual" Margin="1,1,1,1" Grid.Row="1" Grid.Column="4" Content="&gt;=" Click="OperatorButton_Click" />
+                <Button x:Name="btnOperLtEqual" Margin="1,1,1,1" Grid.Row="1" Grid.Column="5" Content="&lt;=" Click="OperatorButton_Click" />
+            </Grid>
+            <Button x:Name="btnSubmitAttQuery" Margin="4,8,4,8" Width="120" Height="24" Content="Submit Query" FontWeight="Bold" Click="SubmitQueryButton_Click"/>
+        </StackPanel>
+        <StackPanel x:Name="PanelSpatialQuery" Orientation="Vertical" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="4,8,4,8">
+                <TextBlock Text="Layer:" Margin="0,0,8,0" Width="48" TextAlignment="Right"></TextBlock>
+                <ComboBox x:Name="lstGeoQueryLayer" Width="240"></ComboBox>
+            </StackPanel>
+            <StackPanel x:Name="DrawModeButtonStack" Orientation="Horizontal" Margin="2,2,2,2" HorizontalAlignment="Center">
+                <HyperlinkButton x:Name="drawModePoint" Margin="2,2,2,2" Width="40" Height="40" Click="GeometryDrawMode_Click" Tag="Point">
+                    <HyperlinkButton.Background>
+                        <ImageBrush ImageSource="../Images/icons/i_draw_point.png" Stretch="None" />
+                    </HyperlinkButton.Background>
+                </HyperlinkButton>
+                <HyperlinkButton x:Name="drawModeLine" Margin="2,2,2,2" Width="40" Height="40" Click="GeometryDrawMode_Click" Tag="Polyline">
+                    <HyperlinkButton.Background>
+                        <ImageBrush ImageSource="../Images/icons/i_draw_line.png" Stretch="None" />
+                    </HyperlinkButton.Background>
+                </HyperlinkButton>
+                <HyperlinkButton x:Name="drawModePoly" Margin="2,2,2,2" Width="40" Height="40" Click="GeometryDrawMode_Click" Tag="Polygon">
+                    <HyperlinkButton.Background>
+                        <ImageBrush ImageSource="../Images/icons/i_draw_poly.png" Stretch="None" />
+                    </HyperlinkButton.Background>
+                </HyperlinkButton>
+                <HyperlinkButton x:Name="drawModeRect" Margin="2,2,2,2" Width="40" Height="40" Click="GeometryDrawMode_Click" Tag="Rectangle">
+                    <HyperlinkButton.Background>
+                        <ImageBrush ImageSource="../Images/icons/i_draw_rect.png" Stretch="None" />
+                    </HyperlinkButton.Background>
+                    <HyperlinkButton.Effect>
+                        <DropShadowEffect Color="Cyan" BlurRadius="40" ShadowDepth="0" />
+                    </HyperlinkButton.Effect>
+                </HyperlinkButton>
+                <HyperlinkButton x:Name="drawModeFreeLine" Margin="2,2,2,2" Width="40" Height="40" Click="GeometryDrawMode_Click" Tag="Freeline">
+                    <HyperlinkButton.Background>
+                        <ImageBrush ImageSource="../Images/icons/i_draw_freeline.png" Stretch="None" />
+                    </HyperlinkButton.Background>
+                </HyperlinkButton>
+                <HyperlinkButton x:Name="drawModeFreePoly" Margin="2,2,2,2" Width="40" Height="40" Click="GeometryDrawMode_Click" Tag="Freepoly">
+                    <HyperlinkButton.Background>
+                        <ImageBrush ImageSource="../Images/icons/i_draw_freepoly.png" Stretch="None" />
+                    </HyperlinkButton.Background>
+                </HyperlinkButton>
+            </StackPanel>
+            <TextBlock x:Name="txtDrawModeStatus" Text="Select by drawing a rectangle on the map." Foreground="Brown" Margin="4,4,4,4" HorizontalAlignment="Center" />
+        </StackPanel>
+        <Grid x:Name="PanelQueryResult" Margin="0,0,0,0" RenderTransformOrigin="0,500" MaxHeight="500" MaxWidth="500" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="QueryResultMessage" Grid.Row="0" Text="" TextWrapping="Wrap" Foreground="Red" HorizontalAlignment="Center" Margin="8,8,8,8"></TextBlock>
+         <base:FeaturesGrid x:Name="QueryResultGrid" Grid.Row="1" Margin="0,0,0,0" SelectedItemChange="QueryResultGrid_SelectedItemChange"></base:FeaturesGrid>
+        </Grid>
+    </Grid>
+</base:WidgetBase>

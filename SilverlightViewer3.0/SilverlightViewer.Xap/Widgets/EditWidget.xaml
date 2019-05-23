@@ -1,0 +1,165 @@
+﻿<base:WidgetBase x:Class="ESRI.SilverlightViewer.UIWidget.EditWidget"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:esri="http://schemas.esri.com/arcgis/client/2009"
+    xmlns:base="clr-namespace:ESRI.SilverlightViewer.Widget"
+    xmlns:core="clr-namespace:ESRI.SilverlightViewer.Controls;assembly=ESRI.SilverlightViewer.Controls"
+    xmlns:esrip="clr-namespace:ESRI.ArcGIS.Client.Toolkit.Primitives;assembly=ESRI.ArcGIS.Client.Toolkit"
+    VerticalScrollBarVisibility="Disabled" MinWidth="240" MaxWidth="400" MaxHeight="400">
+    <base:WidgetBase.Resources>
+        <esri:Editor x:Key="FeatureEditor" />
+        <Style x:Name="ActiveButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Red"></Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Red" BlurRadius="12" ShadowDepth="0"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </base:WidgetBase.Resources>
+    <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+        <StackPanel x:Name="EditorToolButtons" Orientation="Horizontal" VerticalAlignment="Top" DataContext="{StaticResource FeatureEditor}" >
+            <Border CornerRadius="4" Margin="0,0,0,2" BorderBrush="Gray" Width="34" Height="266" BorderThickness="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0.0,0.0" EndPoint="1.0,0.0">
+                        <GradientStop Color="LightGray" Offset="0.0" />
+                        <GradientStop Color="White" Offset="0.5" />
+                        <GradientStop Color="LightGray" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel x:Name="StackEditActionButtons" Orientation="Vertical" Margin="2">
+                    <Button x:Name="ButtonNewSelection" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="New Selection" Command="{Binding Select}" CommandParameter="New" Tag="Select" Click="EditActionButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_newselection.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonAddSelection" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Add to Selection" Command="{Binding Select}" CommandParameter="Add" Tag="Select" Click="EditActionButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_addtoselection.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonRemoveSelection" Margin="2"  Width="24" Height="24" ToolTipService.ToolTip="Remove from Selection" Command="{Binding Select}" CommandParameter="Remove" Tag="Select" Click="EditActionButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_removefromselection.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonClearSelection" Margin="2"  Width="24" Height="24" ToolTipService.ToolTip="Clear Selection" Command="{Binding ClearSelection}">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_clearselection.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonDeleteSelected" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Delete Selected" Command="{Binding DeleteSelected}">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/btn_delete.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Line Margin="2,2,2,0" Width="20" Height="2" Stroke="White" StrokeThickness="2" X1="0" X2="30" Y1="0.5" Y2="0.5" />
+                    <Line Margin="2,0,2,2" Width="20" Height="2" Stroke="DarkGray" StrokeThickness="2" X1="0" X2="30" Y1="0.5" Y2="0.5" />
+                    <Button x:Name="ButtonEditVertices" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Edit Vertices/Move Shape" Command="{Binding EditVertices}" Tag="Edit" Click="EditActionButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_vertices.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonCutSelected" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Split Selected" Command="{Binding Cut}" Tag="Cut" Click="EditActionButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_cut.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonReshapeSelected" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Reshape Selected" Command="{Binding Reshape}" Tag="Reshape" Click="EditActionButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_reshape.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonUnionSelected" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Merge Selected" Command="{Binding Union}" Tag="Union" Click="EditActionButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_merge.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Border>
+            <Border CornerRadius="4" Margin="2,0,0,2" BorderBrush="Gray" Width="34" Height="266" BorderThickness="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0.0,0.0" EndPoint="1.0,0.0">
+                        <GradientStop Color="LightGray" Offset="0.0" />
+                        <GradientStop Color="White" Offset="0.5" />
+                        <GradientStop Color="LightGray" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel x:Name="StackAddFeatureButtons" Orientation="Vertical">
+                    <Button x:Name="ButtonAddPoint" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Add Point" Command="{Binding Add}" Tag="Point">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_markertool.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Line Margin="2,4,2,0" Width="20" Height="2" Stroke="White" StrokeThickness="2" X1="0" X2="30" Y1="0.5" Y2="0.5" />
+                    <Line Margin="2,0,2,4" Width="20" Height="2" Stroke="DarkGray" StrokeThickness="2" X1="0" X2="30" Y1="0.5" Y2="0.5" />
+                    <Button x:Name="ButtonAddPolyline" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Add Polyline" Command="{Binding Add}" Tag="Polyline" Click="AddFeatureButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_polylinetool.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonAddFreehandPolyline" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Add Freehand Polyline" Command="{Binding Add}" Tag="Polyline_Freehand" Click="AddFeatureButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_freehandpolylinetool.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Line Margin="2,4,2,0" Width="20" Height="2" Stroke="White" StrokeThickness="2" X1="0" X2="30" Y1="0.5" Y2="0.5" />
+                    <Line Margin="2,0,2,4" Width="20" Height="2" Stroke="DarkGray" StrokeThickness="2" X1="0" X2="30" Y1="0.5" Y2="0.5" />
+                    <Button x:Name="ButtonAddPolygon" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Add Polygon" Command="{Binding Add}" Tag="Polygon" Click="AddFeatureButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_polygontool.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonAddFreehandPolygon" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Add Freehand Polygon" Command="{Binding Add}" Tag="Polygon_Freehand" Click="AddFeatureButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_freehandpolygontool.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonAddAutoCompletePolygon" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Add Auto Complete Polygon" Command="{Binding Add}" Tag="Polygon_AutoComplete" Click="AddFeatureButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_autocompletePolygontool.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Line Margin="2,4,2,0" Width="20" Height="2" Stroke="White" StrokeThickness="2" X1="0" X2="30" Y1="0.5" Y2="0.5" />
+                    <Line Margin="2,0,2,4" Width="20" Height="2" Stroke="DarkGray" StrokeThickness="2" X1="0" X2="30" Y1="0.5" Y2="0.5" />
+                    <Button x:Name="ButtonEditAttributes" Margin="2" Width="24" Height="24" ToolTipService.ToolTip="Edit Attributes" Tag="Attributes" Click="EditActionButton_Click">
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_attributes.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="ButtonSaveEdits" Margin="2" Width="24" Height="24" Command="{Binding Save}" ToolTipService.ToolTip="Save Edits" >
+                        <Button.Content>
+                            <Image Source="../Images/buttons/edit_save.png" Stretch="None" />
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <!--<Border CornerRadius="4" Margin="4,0,0,0" BorderBrush="LightGray" BorderThickness="1">-->
+        <ScrollViewer Margin="4,0,0,0" Background="Transparent" BorderBrush="LightGray" BorderThickness="2">
+            <ListBox x:Name="FeatureTemplateList" Height="Auto" BorderBrush="Transparent" BorderThickness="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="1,1,1,1">
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                <core:ToggleButton Width="16" Height="14" Background="Transparent" Foreground="Gray" MouseOverColor="Blue" Click="ToggleButton_Click" State="STATE_ROTATE_90" />
+                                <CheckBox Content="{Binding LayerName}" Tag="{Binding LayerID}" IsChecked="{Binding LayerVisibility, Mode=TwoWay}" Click="LayerCheckBox_Click" />
+                            </StackPanel>
+                            <ListBox ItemsSource="{Binding SymbolTypes}" Tag="{Binding LayerID}" Visibility="Collapsed" BorderBrush="Transparent" SelectionMode="Single" GotFocus="SymbolTypeListBox_GotFocus">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="12,0,2,0" Orientation="Horizontal" Tag="{Binding TypeID}" ToolTipService.ToolTip="{Binding Name}">
+                                            <esrip:SymbolDisplay Margin="2,1,2,1" Height="16" Width="24" Symbol="{Binding Symbol}" />
+                                            <TextBlock Margin="2,1,2,1" Text="{Binding Name}" VerticalAlignment="Center"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+        <!--</Border>-->
+    </StackPanel>
+</base:WidgetBase>
